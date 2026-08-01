@@ -1,0 +1,19 @@
+{
+  "name": "web-srver-1762667394305",
+  "version": "1.0.0",
+  "description": "web srver ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "generated",
+    "project"
+  ],
+  "author": "Code Generator",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}

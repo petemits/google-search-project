@@ -1,0 +1,16 @@
+{
+  "name": "project-1763174877345",
+  "version": "1.0.0",
+  "description": "webscraperusing eta tags to extarct contact inforation fro websites",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "generated",
+    "project"
+  ],
+  "author": "Super App Generator",
+  "license": "MIT"
+}

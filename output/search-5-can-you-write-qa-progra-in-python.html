@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results: can you write qa progra in python - "can you write qa progra in python"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #ffffff; 
+            color: #333333; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .search-header { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1px solid #e0e0e0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .search-header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+            color: #1a73e8; 
+        }
+        .search-info { 
+            display: flex; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .search-info p { 
+            margin: 5px 0; 
+            font-size: 1.1em; 
+        }
+        .results-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .search-result { 
+            background: #f8f9fa; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .search-result:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .result-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-wrap: wrap; 
+        }
+        .favicon { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 2px; 
+        }
+        .result-position { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+        }
+        .result-link { 
+            color: #0d652d; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+        }
+        .result-link:hover { 
+            text-decoration: underline; 
+        }
+        .result-content { 
+            display: grid; 
+            grid-template-columns: 1fr auto; 
+            gap: 25px; 
+            align-items: start; 
+        }
+        .result-text { 
+            flex: 1; 
+        }
+        .result-title { 
+            margin-bottom: 10px; 
+        }
+        .result-title a { 
+            color: #1a0dab; 
+            text-decoration: none; 
+            font-size: 1.3em; 
+            font-weight: normal; 
+        }
+        .result-title a:hover { 
+            text-decoration: underline; 
+        }
+        .result-snippet { 
+            color: #4d5156; 
+            line-height: 1.5; 
+        }
+        .result-visual { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            min-width: 200px; 
+        }
+        .result-thumbnail { 
+            width: 200px; 
+            height: 150px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            border: 1px solid #e0e0e0; 
+        }
+        .result-actions { 
+            display: flex; 
+            gap: 8px; 
+        }
+        .visit-btn, .copy-btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            transition: all 0.2s ease; 
+            flex: 1; 
+            text-align: center; 
+        }
+        .visit-btn { 
+            background: #1a73e8; 
+            color: white; 
+        }
+        .visit-btn:hover { 
+            background: #1669c1; 
+        }
+        .copy-btn { 
+            background: #f1f3f4; 
+            color: #333333; 
+            border: 1px solid #e0e0e0; 
+        }
+        .copy-btn:hover { 
+            background: #e8eaed; 
+        }
+        .search-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            color: #666; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        @media (max-width: 768px) { 
+            .result-content { 
+                grid-template-columns: 1fr; 
+            } 
+            .result-visual { 
+                align-items: center; 
+            } 
+            .search-info { 
+                flex-direction: column; 
+                gap: 10px; 
+            } 
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Google Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "can you write qa progra in python"</p>
+                <p><strong>Found:</strong> 10 of 10 results</p>
+                <p><strong>Time:</strong> Multiple requests</p>
+                <p><strong>Search #:</strong> 5</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://www.reddit.com/r/Python/comments/cjhqw/writing_a_full_blown_application/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/Python/comments/cjhqw/writing_a_full_blown_application/" target="_blank">Writing a full blown application : r/Python</a>
+            </h3>
+            <p class="result-snippet">Jun 27, 2010 ... ... to a Python program, even if you don't have to. For one thing, Python does have a useful module/import system, and it's not just for hooking ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/Python/comments/cjhqw/writing_a_full_blown_application/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/Python/comments/cjhqw/writing_a_full_blown_application/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=discuss.python.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://discuss.python.org/t/python-as-functional-programming-language/38402" class="result-link" target="_blank">discuss.python.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://discuss.python.org/t/python-as-functional-programming-language/38402" target="_blank">Python as functional programming language - Python Help ...</a>
+            </h3>
+            <p class="result-snippet">Nov 10, 2023 ... programming in Python the way you can in a language designed ... If one tries to write a complex program with thousands of such consumed ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=discuss.python." alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://discuss.python.org/t/python-as-functional-programming-language/38402" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://discuss.python.org/t/python-as-functional-programming-language/38402')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://www.reddit.com/r/Python/comments/1wy3s5/how_do_you_design_large_programs_in_python/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/Python/comments/1wy3s5/how_do_you_design_large_programs_in_python/" target="_blank">How do you design large programs in python? : r/Python</a>
+            </h3>
+            <p class="result-snippet">Feb 4, 2014 ... You're going to want to test your code and the more coupled it is, the harder that will be to do. You just start writing it and you refactor a ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/Python/comments/1wy3s5/how_do_you_design_large_programs_in_python/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/Python/comments/1wy3s5/how_do_you_design_large_programs_in_python/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#4</span>
+        <a href="https://stackoverflow.com/questions/89228/how-do-i-execute-a-program-or-call-a-system-command" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/89228/how-do-i-execute-a-program-or-call-a-system-command" target="_blank">python - How do I execute a program or call a system command ...</a>
+            </h3>
+            <p class="result-snippet">Sep 18, 2008 ... Use subprocess.run : python. Copy. import subprocess subprocess.run(["ls", "-l"]). Another common way is os.system but you shouldn't use it ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/89228/how-do-i-execute-a-program-or-call-a-system-command" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/89228/how-do-i-execute-a-program-or-call-a-system-command')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.python.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#5</span>
+        <a href="https://www.python.org/about/gettingstarted/" class="result-link" target="_blank">www.python.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.python.org/about/gettingstarted/" target="_blank">Python For Beginners | Python.org</a>
+            </h3>
+            <p class="result-snippet">An experienced programmer in any programming language (whatever it may be) can pick up Python very quickly. It's also easy for beginners to use and learn.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=www.python.org" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.python.org/about/gettingstarted/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.python.org/about/gettingstarted/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#6</span>
+        <a href="https://stackoverflow.com/questions/1522564/how-do-i-run-a-python-program" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/1522564/how-do-i-run-a-python-program" target="_blank">komodo ide - How do I run a Python program? - Stack Overflow</a>
+            </h3>
+            <p class="result-snippet">Oct 5, 2009 ... I used Komodo Edit 5 to write some .py files. My IDE window looks like this: How do I actually run the .py file to test the program? I tried ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/1522564/how-do-i-run-a-python-program" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/1522564/how-do-i-run-a-python-program')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=gist.github.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#7</span>
+        <a href="https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea" class="result-link" target="_blank">gist.github.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea" target="_blank">Python Is Not A Great Programming Language · GitHub</a>
+            </h3>
+            <p class="result-snippet">Syntax for tuples. If you write a single-item tuple (tuple,) but forget the trailing comma, it's no longer a tuple but an expression. This ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=gist.github.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://gist.github.com/RobertAKARobin/a1cba47d62c009a378121398cc5477ea')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#8</span>
+        <a href="https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows" target="_blank">How do you run a Python script as a service in Windows? - Stack ...</a>
+            </h3>
+            <p class="result-snippet">Aug 28, 2008 ... I'm pretty sure I figure how to daemonize the Python program in Linux. ... You write and comfortably debug a normal python program and when it ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=kobzol.github.io&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#9</span>
+        <a href="https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html" class="result-link" target="_blank">kobzol.github.io</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html" target="_blank">Writing Python like it's Rust | Kobzol's blog</a>
+            </h3>
+            <p class="result-snippet">May 20, 2023 ... You can check out a YouTube recording of a talk based on this blog post. I started programming in Rust several years ago, and it has gradually ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=kobzol.github.i" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#10</span>
+        <a href="https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen" target="_blank">How can I make a Python script standalone executable to run ...</a>
+            </h3>
+            <p class="result-snippet">Mar 28, 2011 ... You can use PyInstaller to package Python programs as standalone executables. It works on Windows, Linux, and Mac. PyInstaller Quickstart.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 1:41:12 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

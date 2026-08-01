@@ -1,0 +1,886 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const http = require('http');
+const socketIo = require('socket.io');
+const axios = require('axios');
+const cheerio = require('cheerio');
+const puppeteer = require('puppeteer');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+
+const PORT = process.env.PORT || 3000;
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
+
+let availableModels = [];
+let defaultModel = '';
+
+// Fetch available models from OpenRouter
+async function fetchModels() {
+    try {
+        console.log('Fetching available models from OpenRouter...');
+        const response = await axios.get(OPENROUTER_BASE_URL + '/models', {
+            headers: {
+                'Authorization': 'Bearer ' + OPENROUTER_API_KEY
+            },
+            timeout: 10000
+        });
+
+        if (response.data && response.data.data) {
+            const freeModels = response.data.data.filter(model => 
+                model.id.includes(':free') || 
+                (model.pricing && model.pricing.prompt === '0' && model.pricing.completion === '0')
+            );
+
+            availableModels = freeModels.map(model => ({
+                id: model.id,
+                name: model.name || model.id,
+                description: model.description || 'AI Model'
+            })).slice(0, 10);
+
+            if (availableModels.length > 0) {
+                defaultModel = availableModels[0].id;
+                console.log('Found', availableModels.length, 'free models');
+                console.log('Default model set to:', defaultModel);
+            } else {
+                availableModels = [
+                    { id: 'google/gemini-2.0-flash-exp:free', name: 'Google Gemini 2.0 Flash' },
+                    { id: 'meta-llama/llama-3.3-70b-instruct:free', name: 'Llama 3.3 70B' }
+                ];
+                defaultModel = availableModels[0].id;
+                console.log('Using fallback models');
+            }
+        }
+    } catch (error) {
+        console.error('Failed to fetch models, using fallback:', error.message);
+        availableModels = [
+            { id: 'google/gemini-2.0-flash-exp:free', name: 'Google Gemini 2.0 Flash' },
+            { id: 'meta-llama/llama-3.3-70b-instruct:free', name: 'Llama 3.3 70B' },
+            { id: 'qwen/qwen-2.5-32b-instruct:free', name: 'Qwen 2.5 32B' }
+        ];
+        defaultModel = availableModels[0].id;
+    }
+}
+
+const conversations = new Map();
+
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Advanced website scraper with contact information extraction
+async function scrapeWebsiteWithPuppeteer(url) {
+    let browser;
+    try {
+        console.log('Launching Puppeteer for:', url);
+        
+        // Format URL
+        if (!url.startsWith('http')) {
+            url = 'https://' + url;
+        }
+
+        // Launch browser
+        browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+
+        const page = await browser.newPage();
+        
+        // Set user agent to avoid blocking
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+        
+        // Set timeout
+        await page.setDefaultTimeout(15000);
+        
+        console.log('Navigating to:', url);
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 15000 });
+
+        // Get page content
+        const html = await page.content();
+        const $ = cheerio.load(html);
+
+        // Extract basic information
+        const title = $('title').text().trim() || 'No title found';
+        const description = $('meta[name="description"]').attr('content') || $('meta[property="og:description"]').attr('content') || 'No description found';
+
+        // Extract contact information patterns
+        const contactInfo = extractContactInfo($, html);
+        
+        // Extract executive/team information
+        const executives = extractExecutiveInfo($);
+        
+        // Extract company information
+        const companyInfo = extractCompanyInfo($);
+        
+        // Extract social media links
+        const socialMedia = extractSocialMedia($);
+        
+        // Extract key pages (About, Contact, Team, etc.)
+        const keyPages = extractKeyPages($, url);
+
+        // Try to find phone numbers in the page text
+        const pageText = $('body').text();
+        const foundPhones = extractPhonesFromText(pageText);
+        const foundEmails = extractEmailsFromText(pageText);
+
+        // Combine all contact information
+        const allContacts = {
+            ...contactInfo,
+            phones: [...new Set([...contactInfo.phones, ...foundPhones])],
+            emails: [...new Set([...contactInfo.emails, ...foundEmails])]
+        };
+
+        await browser.close();
+
+        return {
+            success: true,
+            url: url,
+            basicInfo: {
+                title,
+                description,
+                domain: new URL(url).hostname
+            },
+            contactInfo: allContacts,
+            executives,
+            companyInfo,
+            socialMedia,
+            keyPages,
+            scrapedAt: new Date().toISOString()
+        };
+
+    } catch (error) {
+        console.error('Puppeteer scraping error:', error.message);
+        if (browser) {
+            await browser.close();
+        }
+        
+        // Fallback to simple axios scraping
+        return await scrapeWebsiteSimple(url);
+    }
+}
+
+// Simple scraping fallback
+async function scrapeWebsiteSimple(url) {
+    try {
+        console.log('Using simple scraping for:', url);
+        
+        if (!url.startsWith('http')) {
+            url = 'https://' + url;
+        }
+
+        const response = await axios.get(url, {
+            timeout: 10000,
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+        });
+
+        const $ = cheerio.load(response.data);
+        const title = $('title').text().trim() || 'No title found';
+        const description = $('meta[name="description"]').attr('content') || 'No description found';
+        const pageText = $('body').text();
+
+        // Extract contact information from page text
+        const phones = extractPhonesFromText(pageText);
+        const emails = extractEmailsFromText(pageText);
+
+        return {
+            success: true,
+            url: url,
+            basicInfo: {
+                title,
+                description,
+                domain: new URL(url).hostname
+            },
+            contactInfo: {
+                phones,
+                emails,
+                address: extractAddressFromText(pageText),
+                contactPage: findContactPage($, url)
+            },
+            scrapedAt: new Date().toISOString(),
+            note: 'Used simple scraping (limited data)'
+        };
+
+    } catch (error) {
+        console.error('Simple scraping also failed:', error.message);
+        return {
+            success: false,
+            error: 'Failed to scrape website: ' + error.message,
+            url: url
+        };
+    }
+}
+
+// Contact information extraction functions
+function extractContactInfo($, html) {
+    const phones = new Set();
+    const emails = new Set();
+    let address = '';
+
+    // Extract from meta tags
+    $('meta[content*="@"]').each((i, el) => {
+        const content = $(el).attr('content');
+        const emailMatches = content.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g);
+        if (emailMatches) emailMatches.forEach(email => emails.add(email));
+    });
+
+    // Extract from links
+    $('a[href*="mailto:"]').each((i, el) => {
+        const href = $(el).attr('href');
+        const email = href.replace('mailto:', '').split('?')[0];
+        if (email) emails.add(email);
+    });
+
+    $('a[href*="tel:"]').each((i, el) => {
+        const href = $(el).attr('href');
+        const phone = href.replace('tel:', '').trim();
+        if (phone) phones.add(phone);
+    });
+
+    // Extract from text content
+    const bodyText = $('body').text();
+    const foundPhones = extractPhonesFromText(bodyText);
+    const foundEmails = extractEmailsFromText(bodyText);
+    foundPhones.forEach(phone => phones.add(phone));
+    foundEmails.forEach(email => emails.add(email));
+
+    // Try to find address
+    address = extractAddressFromText(bodyText);
+
+    return {
+        phones: Array.from(phones),
+        emails: Array.from(emails),
+        address: address,
+        contactPage: findContactPage($, html)
+    };
+}
+
+function extractPhonesFromText(text) {
+    const phoneRegex = /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g;
+    const matches = text.match(phoneRegex) || [];
+    return matches.filter(phone => phone.replace(/\D/g, '').length >= 10);
+}
+
+function extractEmailsFromText(text) {
+    const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+    return text.match(emailRegex) || [];
+}
+
+function extractAddressFromText(text) {
+    // Simple address detection (can be improved)
+    const addressIndicators = ['street', 'st.', 'avenue', 'ave.', 'road', 'rd.', 'boulevard', 'blvd.', 'drive', 'dr.'];
+    const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    
+    for (const line of lines) {
+        if (addressIndicators.some(indicator => line.toLowerCase().includes(indicator)) && 
+            line.length > 10 && line.length < 100) {
+            return line;
+        }
+    }
+    return '';
+}
+
+function extractExecutiveInfo($) {
+    const executives = [];
+    
+    // Look for team sections, about pages, leadership
+    const selectors = [
+        '.team-member', '.executive', '.leadership', '.staff',
+        '[class*="team"]', '[class*="executive"]', '[class*="leadership"]',
+        '.person', '.employee', '.member'
+    ];
+
+    selectors.forEach(selector => {
+        $(selector).each((i, el) => {
+            const name = $(el).find('h3, h4, .name, .title').first().text().trim();
+            const title = $(el).find('.position, .role, .job-title').first().text().trim();
+            
+            if (name && name.length > 2) {
+                executives.push({
+                    name,
+                    title: title || 'Not specified',
+                    element: $(el).text().substring(0, 200)
+                });
+            }
+        });
+    });
+
+    return executives.slice(0, 10); // Limit to 10 executives
+}
+
+function extractCompanyInfo($) {
+    const companyInfo = {};
+    
+    // Look for company description, about text
+    const aboutSelectors = ['#about', '.about', '[class*="about"]', '.company-info', '.business-info'];
+    
+    aboutSelectors.forEach(selector => {
+        const element = $(selector).first();
+        if (element.length) {
+            companyInfo.about = element.text().trim().substring(0, 500);
+        }
+    });
+
+    return companyInfo;
+}
+
+function extractSocialMedia($) {
+    const socialMedia = {};
+    const platforms = {
+        'facebook.com': 'facebook',
+        'twitter.com': 'twitter',
+        'linkedin.com': 'linkedin',
+        'instagram.com': 'instagram',
+        'youtube.com': 'youtube'
+    };
+
+    $('a[href]').each((i, el) => {
+        const href = $(el).attr('href');
+        for (const [domain, platform] of Object.entries(platforms)) {
+            if (href.includes(domain)) {
+                socialMedia[platform] = href;
+                break;
+            }
+        }
+    });
+
+    return socialMedia;
+}
+
+function extractKeyPages($, baseUrl) {
+    const pages = {};
+    const pageKeywords = {
+        'about': ['about', 'about-us', 'company'],
+        'contact': ['contact', 'contact-us', 'get-in-touch'],
+        'team': ['team', 'leadership', 'executives', 'staff'],
+        'careers': ['careers', 'jobs', 'employment'],
+        'services': ['services', 'products', 'solutions']
+    };
+
+    $('a[href]').each((i, el) => {
+        const href = $(el).attr('href');
+        const text = $(el).text().toLowerCase();
+        
+        if (href && (href.startsWith('/') || href.includes(baseUrl))) {
+            for (const [pageType, keywords] of Object.entries(pageKeywords)) {
+                if (keywords.some(keyword => text.includes(keyword) || href.toLowerCase().includes(keyword))) {
+                    const fullUrl = href.startsWith('http') ? href : new URL(href, baseUrl).href;
+                    pages[pageType] = fullUrl;
+                    break;
+                }
+            }
+        }
+    });
+
+    return pages;
+}
+
+function findContactPage($, baseUrl) {
+    const contactSelectors = [
+        'a[href*="contact"]',
+        'a[href*="contact-us"]',
+        'a[href*="get-in-touch"]',
+        'a:contains("Contact")',
+        'a:contains("Get in Touch")'
+    ];
+
+    for (const selector of contactSelectors) {
+        const link = $(selector).first();
+        if (link.length) {
+            const href = link.attr('href');
+            return href.startsWith('http') ? href : new URL(href, baseUrl).href;
+        }
+    }
+    return '';
+}
+
+// AI Analysis functions
+async function generateContactAnalysis(scrapedData, model = defaultModel) {
+    try {
+        const prompt = `Analyze this business contact information and provide a professional summary:
+
+BUSINESS: ${scrapedData.basicInfo.title}
+WEBSITE: ${scrapedData.url}
+DESCRIPTION: ${scrapedData.basicInfo.description}
+
+CONTACT INFORMATION FOUND:
+- Phones: ${scrapedData.contactInfo.phones.join(', ') || 'None found'}
+- Emails: ${scrapedData.contactInfo.emails.join(', ') || 'None found'}
+- Address: ${scrapedData.contactInfo.address || 'None found'}
+- Contact Page: ${scrapedData.contactInfo.contactPage || 'None found'}
+
+EXECUTIVES/TEAM MEMBERS:
+${scrapedData.executives.map(exec => `- ${exec.name}: ${exec.title}`).join('\n') || 'None found'}
+
+SOCIAL MEDIA:
+${Object.entries(scrapedData.socialMedia).map(([platform, url]) => `- ${platform}: ${url}`).join('\n') || 'None found'}
+
+KEY PAGES:
+${Object.entries(scrapedData.keyPages).map(([page, url]) => `- ${page}: ${url}`).join('\n') || 'None found'}
+
+Please provide:
+1. Business type assessment
+2. Contact information quality rating (1-10)
+3. Key executives identified
+4. Recommended next steps for outreach
+5. Any missing information notes
+
+Keep it concise and actionable.`;
+
+        const response = await axios.post(
+            OPENROUTER_BASE_URL + '/chat/completions',
+            {
+                model: model,
+                messages: [
+                    { 
+                        role: "system", 
+                        content: "You are a business intelligence analyst who specializes in contact information and executive profiling. Provide clear, actionable insights." 
+                    },
+                    { role: "user", content: prompt }
+                ],
+                max_tokens: 800,
+                temperature: 0.7
+            },
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
+                    'Content-Type': 'application/json'
+                },
+                timeout: 30000
+            }
+        );
+
+        return {
+            success: true,
+            analysis: response.data.choices[0].message.content,
+            model: model
+        };
+
+    } catch (error) {
+        console.error('Contact analysis error:', error.message);
+        return {
+            success: false,
+            error: 'Analysis failed: ' + error.message
+        };
+    }
+}
+
+// API Routes
+app.post('/api/scrape-website', async (req, res) => {
+    try {
+        const { url } = req.body;
+        
+        if (!url) {
+            return res.json({ error: 'URL is required' });
+        }
+
+        console.log('Scraping website:', url);
+        const scrapedData = await scrapeWebsiteWithPuppeteer(url);
+        res.json(scrapedData);
+
+    } catch (error) {
+        res.json({
+            success: false,
+            error: 'Scraping failed: ' + error.message
+        });
+    }
+});
+
+app.post('/api/analyze-contacts', async (req, res) => {
+    try {
+        const { url, model = defaultModel } = req.body;
+        
+        if (!url) {
+            return res.json({ error: 'URL is required' });
+        }
+
+        // First scrape the website
+        const scrapedData = await scrapeWebsiteWithPuppeteer(url);
+        
+        if (!scrapedData.success) {
+            return res.json(scrapedData);
+        }
+
+        // Then analyze the contacts
+        const analysis = await generateContactAnalysis(scrapedData, model);
+        res.json({
+            ...analysis,
+            scrapedData: scrapedData
+        });
+
+    } catch (error) {
+        res.json({
+            success: false,
+            error: 'Contact analysis failed: ' + error.message
+        });
+    }
+});
+
+app.get('/api/models', (req, res) => {
+    res.json({ models: availableModels });
+});
+
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'OK', 
+        baseURL: OPENROUTER_BASE_URL,
+        models: availableModels.length,
+        default_model: defaultModel,
+        features: ['web_scraping', 'contact_extraction', 'executive_profiling', 'ai_analysis']
+    });
+});
+
+// Socket.IO for real-time features
+io.on('connection', (socket) => {
+    console.log('User connected:', socket.id);
+
+    socket.on('scrape_website', async (data) => {
+        try {
+            const { url } = data;
+            socket.emit('scraping_start');
+            
+            const response = await axios.post('http://localhost:' + PORT + '/api/scrape-website', { url });
+            socket.emit('scraping_result', response.data);
+        } catch (error) {
+            socket.emit('error', 'Website scraping failed');
+        }
+    });
+
+    socket.on('analyze_contacts', async (data) => {
+        try {
+            const { url, model } = data;
+            socket.emit('analysis_start');
+            
+            const response = await axios.post('http://localhost:' + PORT + '/api/analyze-contacts', { 
+                url, 
+                model: model || defaultModel 
+            });
+            socket.emit('analysis_result', response.data);
+        } catch (error) {
+            socket.emit('error', 'Contact analysis failed');
+        }
+    });
+
+    socket.on('get_models', () => {
+        socket.emit('models_list', { models: availableModels });
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected:', socket.id);
+    });
+});
+
+// Serve the frontend
+app.get('/', (req, res) => {
+    let modelsOptions = '';
+    availableModels.forEach(model => {
+        const selected = model.id === defaultModel ? ' selected' : '';
+        modelsOptions += '<option value="' + model.id + '"' + selected + '>' + model.name + '</option>';
+    });
+
+    const html = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Business Contact Scraper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 95%; max-width: 1200px; height: 95vh;
+            background: white; border-radius: 15px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        header {
+            background: #2c3e50; color: white; padding: 20px;
+            text-align: center; border-radius: 15px 15px 0 0;
+        }
+        .content {
+            flex: 1; padding: 20px; overflow-y: auto;
+            background: #f8f9fa; display: flex; flex-direction: column;
+        }
+        .controls {
+            background: white; padding: 20px; border-radius: 10px;
+            margin-bottom: 15px; border: 1px solid #e1e8ed;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            padding: 12px; margin: 8px; border: 1px solid #ddd;
+            border-radius: 8px; font-size: 14px;
+        }
+        button {
+            background: #3498db; color: white; cursor: pointer;
+            border: none; transition: background 0.3s;
+            font-weight: 600;
+        }
+        button:hover { background: #2980b9; }
+        button:disabled { background: #7f8c8d; cursor: not-allowed; }
+        .btn-primary { background: #3498db; }
+        .btn-success { background: #27ae60; }
+        .btn-warning { background: #f39c12; }
+        .results-area {
+            flex: 1; background: white; border: 1px solid #e1e8ed;
+            border-radius: 10px; padding: 20px; overflow-y: auto;
+            margin-bottom: 15px;
+        }
+        .message {
+            margin: 12px 0; padding: 15px; border-radius: 12px;
+            line-height: 1.5;
+        }
+        .info-message {
+            background: #e8f4f8; border: 1px solid #b3e0f2;
+        }
+        .success-message {
+            background: #e8f5e8; color: #2e7d32; border: 1px solid #4caf50;
+        }
+        .error-message {
+            background: #ffebee; color: #c62828; border: 1px solid #f44336;
+        }
+        .contact-card {
+            background: #f8f9fa; border: 1px solid #e1e8ed;
+            border-radius: 8px; padding: 15px; margin: 10px 0;
+        }
+        .contact-item {
+            margin: 5px 0; padding: 8px; background: white;
+            border-radius: 4px; border-left: 4px solid #3498db;
+        }
+        .executive-card {
+            background: #fff3cd; border: 1px solid #ffeaa7;
+            border-radius: 8px; padding: 12px; margin: 8px 0;
+        }
+        .loading {
+            color: #666; font-style: italic; padding: 15px;
+            display: none; text-align: center;
+            background: #f8f9fa; border-radius: 8px;
+            margin: 10px 0;
+        }
+        .stats {
+            display: flex; gap: 15px; margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: #3498db; color: white; padding: 8px 12px;
+            border-radius: 6px; font-size: 0.9em;
+        }
+        .url-input-container {
+            display: flex; gap: 10px; align-items: center;
+        }
+        .url-input {
+            flex: 1;
+        }
+        .action-buttons {
+            display: flex; gap: 10px; flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Business Contact Scraper</h1>
+            <p>Extract Executive Contacts & Company Information from Any Website</p>
+        </header>
+        
+        <div class="content">
+            <div class="controls">
+                <div class="url-input-container">
+                    <input type="text" id="websiteUrl" class="url-input" 
+                           placeholder="Enter any website URL (e.g., company.com, startup.io)" 
+                           value="">
+                    <select id="analysisModel">` + modelsOptions + `</select>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="scrapeWebsite()">🔍 Scrape Website</button>
+                    <button class="btn-success" onclick="analyzeContacts()">📊 Analyze Contacts</button>
+                    <button class="btn-warning" onclick="clearResults()">🗑️ Clear Results</button>
+                </div>
+            </div>
+
+            <div class="results-area" id="resultsArea">
+                <div class="message info-message">
+                    <strong>Business Contact Scraper</strong><br><br>
+                    This tool can extract from ANY website:<br>
+                    • Phone numbers & email addresses<br>
+                    • Executive team members & titles<br>
+                    • Company address & contact pages<br>
+                    • Social media links<br>
+                    • Business information & analysis<br><br>
+                    <em>Try any company website: tech startups, law firms, consulting companies, etc.</em>
+                </div>
+            </div>
+            <div class="loading" id="loadingIndicator">Processing website... This may take 15-30 seconds</div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Socket event handlers
+        socket.on('scraping_result', (data) => {
+            displayScrapingResults(data);
+            document.getElementById('loadingIndicator').style.display = 'none';
+        });
+
+        socket.on('analysis_result', (data) => {
+            displayAnalysisResults(data);
+            document.getElementById('loadingIndicator').style.display = 'none';
+        });
+
+        socket.on('error', (error) => {
+            addMessage('❌ Error: ' + error, 'error', 'resultsArea');
+            document.getElementById('loadingIndicator').style.display = 'none';
+        });
+
+        // Main functions
+        function scrapeWebsite() {
+            const url = document.getElementById('websiteUrl').value.trim();
+            if (!url) return alert('Please enter a website URL');
+
+            document.getElementById('loadingIndicator').style.display = 'block';
+            socket.emit('scrape_website', { url: url });
+        }
+
+        function analyzeContacts() {
+            const url = document.getElementById('websiteUrl').value.trim();
+            const model = document.getElementById('analysisModel').value;
+            
+            if (!url) return alert('Please enter a website URL');
+
+            document.getElementById('loadingIndicator').style.display = 'block';
+            socket.emit('analyze_contacts', { 
+                url: url, 
+                model: model 
+            });
+        }
+
+        function clearResults() {
+            document.getElementById('resultsArea').innerHTML = 
+                '<div class="message info-message">Results cleared. Enter a new website to analyze.</div>';
+        }
+
+        // Display functions
+        function displayScrapingResults(data) {
+            const area = document.getElementById('resultsArea');
+            area.innerHTML = '';
+
+            if (data.success) {
+                // Basic info
+                addMessage(`✅ Successfully scraped: ${data.basicInfo.title}`, 'success', 'resultsArea');
+                addMessage(`<strong>Website:</strong> ${data.url}`, 'info', 'resultsArea');
+                addMessage(`<strong>Description:</strong> ${data.basicInfo.description}`, 'info', 'resultsArea');
+
+                // Contact information
+                if (data.contactInfo.phones.length > 0 || data.contactInfo.emails.length > 0) {
+                    addMessage('<div class="contact-card"><strong>📞 CONTACT INFORMATION</strong>', 'info', 'resultsArea');
+                    
+                    if (data.contactInfo.phones.length > 0) {
+                        data.contactInfo.phones.forEach(phone => {
+                            addMessage(`<div class="contact-item">📱 Phone: ${phone}</div>`, 'info', 'resultsArea');
+                        });
+                    }
+                    
+                    if (data.contactInfo.emails.length > 0) {
+                        data.contactInfo.emails.forEach(email => {
+                            addMessage(`<div class="contact-item">✉️ Email: ${email}</div>`, 'info', 'resultsArea');
+                        });
+                    }
+                    
+                    if (data.contactInfo.address) {
+                        addMessage(`<div class="contact-item">🏢 Address: ${data.contactInfo.address}</div>`, 'info', 'resultsArea');
+                    }
+                    
+                    addMessage('</div>', 'info', 'resultsArea');
+                }
+
+                // Executives
+                if (data.executives && data.executives.length > 0) {
+                    addMessage('<strong>👥 EXECUTIVES/TEAM MEMBERS</strong>', 'info', 'resultsArea');
+                    data.executives.forEach(exec => {
+                        addMessage(`<div class="executive-card"><strong>${exec.name}</strong><br>${exec.title}</div>`, 'info', 'resultsArea');
+                    });
+                }
+
+                // Stats
+                const stats = [
+                    `Phones: ${data.contactInfo.phones.length}`,
+                    `Emails: ${data.contactInfo.emails.length}`,
+                    `Executives: ${data.executives ? data.executives.length : 0}`,
+                    `Scraped: ${new Date(data.scrapedAt).toLocaleTimeString()}`
+                ];
+                
+                addMessage(`<div class="stats">${stats.map(stat => 
+                    `<div class="stat-item">${stat}</div>`).join('')}</div>`, 'info', 'resultsArea');
+
+            } else {
+                addMessage('❌ Scraping failed: ' + data.error, 'error', 'resultsArea');
+            }
+        }
+
+        function displayAnalysisResults(data) {
+            const area = document.getElementById('resultsArea');
+            
+            if (data.success) {
+                // Show scraping results first
+                displayScrapingResults(data.scrapedData);
+                
+                // Then show AI analysis
+                addMessage('<div class="message success-message"><strong>🤖 AI CONTACT ANALYSIS</strong></div>', 'success', 'resultsArea');
+                addMessage(`<div class="contact-card">${data.analysis.replace(/\n/g, '<br>')}</div>`, 'info', 'resultsArea');
+                
+            } else {
+                addMessage('❌ Analysis failed: ' + data.error, 'error', 'resultsArea');
+            }
+        }
+
+        function addMessage(text, type, areaId) {
+            const area = document.getElementById(areaId);
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type === 'error' ? 'error-message' : 
+                                 type === 'success' ? 'success-message' : 'info-message';
+            messageDiv.innerHTML = text;
+            area.appendChild(messageDiv);
+            area.scrollTop = area.scrollHeight;
+        }
+
+        // Initialize
+        socket.emit('get_models');
+
+        // Example URL
+        document.getElementById('websiteUrl').value = 'stripe.com';
+    </script>
+</body>
+</html>`;
+
+    res.send(html);
+});
+
+// Initialize models when server starts
+fetchModels().then(() => {
+    server.listen(PORT, () => {
+        console.log('🚀 Business Contact Scraper Server Started!');
+        console.log('===========================================');
+        console.log('📍 Local: http://localhost:' + PORT);
+        console.log('🔗 Base URL:', OPENROUTER_BASE_URL);
+        console.log('🤖 Available models:', availableModels.length);
+        console.log('📊 Features:');
+        console.log('   - Advanced web scraping with Puppeteer');
+        console.log('   - Contact information extraction');
+        console.log('   - Executive team profiling');
+        console.log('   - AI-powered business analysis');
+        console.log('\n💡 Try scraping: stripe.com, airbnb.com, or any company website!');
+    });
+});

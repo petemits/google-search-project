@@ -1,0 +1,16 @@
+{
+  "name": "project-1762709637018",
+  "version": "1.0.0",
+  "description": "ai chatbox",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "generated",
+    "project"
+  ],
+  "author": "Super App Generator",
+  "license": "MIT"
+}

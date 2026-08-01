@@ -1,0 +1,28 @@
+{
+  "name": "super-search-app",
+  "version": "1.0.0",
+  "description": "All-in-one Google Search + Code Execution + AI Code Generation",
+  "main": "super-search.js",
+  "scripts": {
+    "start": "node super-search.js",
+    "search": "node super-search.js search",
+    "code": "node super-search.js code",
+    "ai": "node super-search.js ai",
+    "demo": "node super-search.js demo"
+  },
+  "keywords": [
+    "google-search",
+    "code-execution",
+    "ai-code-generation",
+    "javascript",
+    "python",
+    "automation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chalk": "^4.1.2",
+    "dotenv": "^16.3.1"
+  }
+}

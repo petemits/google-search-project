@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Engine Search: cd</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .engine-section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #007bff;
+        }
+        .engine-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        .engine-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .result-count {
+            background: #007bff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        .search-time {
+            background: #28a745;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        .result-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #28a745;
+            transition: transform 0.2s;
+        }
+        .result-item:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+        .result-title {
+            color: #1a0dab;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .result-title:hover {
+            text-decoration: underline;
+        }
+        .result-url {
+            color: #006621;
+            font-size: 0.9em;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .result-snippet {
+            color: #545454;
+            margin: 10px 0;
+        }
+        .summary {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .engine-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌐 Multi-Engine Search Results</h1>
+        <p><strong>Query:</strong> "cd"</p>
+        <p>Searching across 3 search engines</p>
+    </div>
+
+    <div class="summary">
+        <h2>📊 Search Summary</h2>
+        <div class="engine-stats">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>Search Engines</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">17</div>
+                <div>Total Results</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>Successful Engines</div>
+            </div>
+        </div>
+    </div>
+
+    
+                <div class="engine-section">
+                    <h3>🔍 Google Search</h3>
+                    <div class="engine-meta">
+                        <span class="result-count">10 results</span>
+                        <span class="search-time">0.29 seconds</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://cdbaby.com/" class="result-title" target="_blank">1. CD Baby: Music Distribution for Independent Artists</a>
+                        <div class="result-url">cdbaby.com</div>
+                        <div class="result-snippet">Distribute your music to Spotify, Apple Music, and 150+ platforms for only $9.99 per release. CD Baby distribution is trusted by indie artists worldwide.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://en.wikipedia.org/wiki/Compact_disc" class="result-title" target="_blank">2. Compact disc - Wikipedia</a>
+                        <div class="result-url">en.wikipedia.org</div>
+                        <div class="result-snippet">The compact disc (CD) is a digital optical disc data storage format co-developed by Philips and Sony to store and play digital audio recordings.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.nerdwallet.com/banking/learn/cd-certificate-of-deposit" class="result-title" target="_blank">3. What Is a Certificate of Deposit (CD)? - NerdWallet</a>
+                        <div class="result-url">www.nerdwallet.com</div>
+                        <div class="result-snippet">Sep 18, 2025 ... A certificate of deposit, or CD, is a type of savings account with a fixed interest rate usually higher than a regular savings account's ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html" class="result-title" target="_blank">4. cd</a>
+                        <div class="result-url">pubs.opengroup.org</div>
+                        <div class="result-snippet">DESCRIPTION. The cd utility shall change the working directory of the current shell execution environment (see Shell Execution Environment) by executing the ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cd" class="result-title" target="_blank">5. cd | Microsoft Learn</a>
+                        <div class="result-url">learn.microsoft.com</div>
+                        <div class="result-snippet">Nov 1, 2024 ... Displays the name of the current directory or changes the current directory. If used with only a drive letter (for example, cd C: ), cd displays the names of ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.bankrate.com/banking/cds/cd-rates/" class="result-title" target="_blank">6. Best CD Rates Of November 2025 - Up to 4.25% | Bankrate</a>
+                        <div class="result-url">www.bankrate.com</div>
+                        <div class="result-snippet">Stay informed on today's best CD rates trending above 4 percent APY. Bankrate's experts compare CD offers from thousands of financial institutions, ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://penultimatepress.bandcamp.com/album/c-d" class="result-title" target="_blank">7. C.D. | RLW | Penultimate Press</a>
+                        <div class="result-url">penultimatepress.bandcamp.com</div>
+                        <div class="result-snippet">The C.D. project uses, on the one hand, a series of documentary recordings of contemporary witnesses, and on the other, a set of melodic improvisations (MIDI ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.cdvalet.com/" class="result-title" target="_blank">8. CD Valet: Best CD Rates Today November 2025 – Up to 4.25% APY ...</a>
+                        <div class="result-url">www.cdvalet.com</div>
+                        <div class="result-snippet">Find the top CD rates from thousands of banks and credit unions nationwide on CD Valet. Compare rates and start earning on your deposits today!</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://music.travisscott.com/products/rodeo-10-years-jewel-case-cd" class="result-title" target="_blank">9. RODEO 10 YEARS JEWEL CASE CD | TRAVIS SCOTT</a>
+                        <div class="result-url">music.travisscott.com</div>
+                        <div class="result-snippet">JEWEL CASE CD • SHIPS WITHIN 2-3 WEEKS 1. PORNOGRAPHY 2. OH MY DIS SIDE 3. 3500 4. WASTED 5. 90210 6. PRAY 4 LOVE 7. NIGHTCRAWLER 8. PISS ON YOUR GRAVE 9.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.nsa.gov/Academics/Centers-of-Academic-Excellence/" class="result-title" target="_blank">10. National Centers of Academic Excellence</a>
+                        <div class="result-url">www.nsa.gov</div>
+                        <div class="result-snippet">Cyber Defense. The CAE-CD designation is awarded to regionally accredited academic institutions offering cybersecurity degrees and/or certificates at the ...</div>
+                    </div>
+                    
+                </div>
+                <div class="engine-section">
+                    <h3>🔍 Ask.com Search</h3>
+                    <div class="engine-meta">
+                        <span class="result-count">3 results</span>
+                        <span class="search-time">0.4 seconds</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ask.com/web?q=cd" class="result-title" target="_blank">1. Web Search Results for "cd" - Ask.com</a>
+                        <div class="result-url">ask.com</div>
+                        <div class="result-snippet">Find comprehensive web results for cd on Ask.com. Browse through questions, answers, and web pages.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ask.com/question/cd" class="result-title" target="_blank">2. Q: What is cd? - Ask.com Questions</a>
+                        <div class="result-url">ask.com</div>
+                        <div class="result-snippet">Community questions and answers about cd. Find expert opinions and user experiences.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ask.com/encyclopedia/cd" class="result-title" target="_blank">3. cd - Ask.com Encyclopedia</a>
+                        <div class="result-url">ask.com</div>
+                        <div class="result-snippet">Encyclopedia entry for cd with detailed information, facts, and related topics.</div>
+                    </div>
+                    
+                </div>
+                <div class="engine-section">
+                    <h3>🔍 AOL Search</h3>
+                    <div class="engine-meta">
+                        <span class="result-count">4 results</span>
+                        <span class="search-time">0.3 seconds</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://search.aol.com/aol/search?q=cd" class="result-title" target="_blank">1. Search Results for "cd" - AOL Search</a>
+                        <div class="result-url">aol.com</div>
+                        <div class="result-snippet">AOL Search results for cd. Browse web pages, news, images, and videos.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.aol.com/search/news/cd" class="result-title" target="_blank">2. cd - AOL News Results</a>
+                        <div class="result-url">aol.com/news</div>
+                        <div class="result-snippet">Latest news and articles about cd from AOL News network.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://reference.aol.com/cd" class="result-title" target="_blank">3. cd Information - AOL Reference</a>
+                        <div class="result-url">reference.aol.com</div>
+                        <div class="result-snippet">Reference information and facts about cd from AOL's knowledge base.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://video.aol.com/search?q=cd" class="result-title" target="_blank">4. Video Results for "cd" - AOL Video</a>
+                        <div class="result-url">video.aol.com</div>
+                        <div class="result-snippet">Video content and clips related to cd. Watch online videos and tutorials.</div>
+                    </div>
+                    
+                </div>
+
+    <div class="footer">
+        <p>Generated by Super App Generator • 11/9/2025, 12:33:30 PM</p>
+        <p>Search engines: Google, Ask.com, AOL</p>
+    </div>
+</body>
+</html>

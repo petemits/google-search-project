@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results: travel to canada - "travel to canada"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #ffffff; 
+            color: #333333; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .search-header { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1px solid #e0e0e0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .search-header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+            color: #1a73e8; 
+        }
+        .search-info { 
+            display: flex; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .search-info p { 
+            margin: 5px 0; 
+            font-size: 1.1em; 
+        }
+        .results-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .search-result { 
+            background: #f8f9fa; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .search-result:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .result-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-wrap: wrap; 
+        }
+        .favicon { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 2px; 
+        }
+        .result-position { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+        }
+        .result-link { 
+            color: #0d652d; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+        }
+        .result-link:hover { 
+            text-decoration: underline; 
+        }
+        .result-content { 
+            display: grid; 
+            grid-template-columns: 1fr auto; 
+            gap: 25px; 
+            align-items: start; 
+        }
+        .result-text { 
+            flex: 1; 
+        }
+        .result-title { 
+            margin-bottom: 10px; 
+        }
+        .result-title a { 
+            color: #1a0dab; 
+            text-decoration: none; 
+            font-size: 1.3em; 
+            font-weight: normal; 
+        }
+        .result-title a:hover { 
+            text-decoration: underline; 
+        }
+        .result-snippet { 
+            color: #4d5156; 
+            line-height: 1.5; 
+        }
+        .result-visual { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            min-width: 200px; 
+        }
+        .result-thumbnail { 
+            width: 200px; 
+            height: 150px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            border: 1px solid #e0e0e0; 
+        }
+        .result-actions { 
+            display: flex; 
+            gap: 8px; 
+        }
+        .visit-btn, .copy-btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            transition: all 0.2s ease; 
+            flex: 1; 
+            text-align: center; 
+        }
+        .visit-btn { 
+            background: #1a73e8; 
+            color: white; 
+        }
+        .visit-btn:hover { 
+            background: #1669c1; 
+        }
+        .copy-btn { 
+            background: #f1f3f4; 
+            color: #333333; 
+            border: 1px solid #e0e0e0; 
+        }
+        .copy-btn:hover { 
+            background: #e8eaed; 
+        }
+        .search-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            color: #666; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        @media (max-width: 768px) { 
+            .result-content { 
+                grid-template-columns: 1fr; 
+            } 
+            .result-visual { 
+                align-items: center; 
+            } 
+            .search-info { 
+                flex-direction: column; 
+                gap: 10px; 
+            } 
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Google Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "travel to canada"</p>
+                <p><strong>Found:</strong> 10 of 10 results</p>
+                <p><strong>Time:</strong> Multiple requests</p>
+                <p><strong>Search #:</strong> 1</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.canada.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" class="result-link" target="_blank">www.canada.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank">Visit Canada - Canada.ca</a>
+            </h3>
+            <p class="result-snippet">Sep 10, 2025 ... Check if you need a visa or electronic travel authorization (eTA) to travel to Canada, to visit family or to visit on business. Find out about ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=www.canada.ca" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=ircc.canada.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://ircc.canada.ca/english/visit/visas.asp" class="result-link" target="_blank">ircc.canada.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://ircc.canada.ca/english/visit/visas.asp" target="_blank">Find out if you need a visa to travel to Canada</a>
+            </h3>
+            <p class="result-snippet">Apr 25, 2025 ... Find out if you need a visa to travel to Canada · Answer: You should already have a valid visitor visa · Answer: You need a visitor visa.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=ircc.canada.ca" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://ircc.canada.ca/english/visit/visas.asp" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://ircc.canada.ca/english/visit/visas.asp')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=travel.state.gov&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://travel.state.gov/en/international-travel/travel-advisories/canada.html" class="result-link" target="_blank">travel.state.gov</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://travel.state.gov/en/international-travel/travel-advisories/canada.html" target="_blank">Canada Travel Advisory | Travel.State.gov</a>
+            </h3>
+            <p class="result-snippet">Entry, exit, and visa requirements · U.S. citizens do not need a tourist visa to visit Canada for less than 180 days. · Visits longer than 180 days generally ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=travel.state.go" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://travel.state.gov/en/international-travel/travel-advisories/canada.html" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://travel.state.gov/en/international-travel/travel-advisories/canada.html')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=travel.gc.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#4</span>
+        <a href="https://travel.gc.ca/" class="result-link" target="_blank">travel.gc.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://travel.gc.ca/" target="_blank">Travel.gc.ca - Home</a>
+            </h3>
+            <p class="result-snippet">Government of Canada's official one-stop-shop for comprehensive international travel information.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/DDA0DD/FFFFFF?text=travel.gc.ca" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://travel.gc.ca/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://travel.gc.ca/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.cbsa-asfc.gc.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#5</span>
+        <a href="https://www.cbsa-asfc.gc.ca/travel-voyage/td-dv-eng.html" class="result-link" target="_blank">www.cbsa-asfc.gc.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.cbsa-asfc.gc.ca/travel-voyage/td-dv-eng.html" target="_blank">Travel and identification documents for entering Canada</a>
+            </h3>
+            <p class="result-snippet">Aug 21, 2025 ... Carry a valid Canadian passport for all visits abroad, including visits to the US. It is the only universally accepted identification document.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=www.cbsa-asfc.g" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.cbsa-asfc.gc.ca/travel-voyage/td-dv-eng.html" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.cbsa-asfc.gc.ca/travel-voyage/td-dv-eng.html')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=travel.gc.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#6</span>
+        <a href="https://travel.gc.ca/travelling/advisories" class="result-link" target="_blank">travel.gc.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://travel.gc.ca/travelling/advisories" target="_blank">Travel advice and advisories - Travel.gc.ca</a>
+            </h3>
+            <p class="result-snippet">Feb 13, 2024 ... The Government of Canada's official source of travel information and advice, the Travel Advice and Advisories help you to make informed decisions and travel ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/DDA0DD/FFFFFF?text=travel.gc.ca" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://travel.gc.ca/travelling/advisories" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://travel.gc.ca/travelling/advisories')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.cbsa-asfc.gc.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#7</span>
+        <a href="https://www.cbsa-asfc.gc.ca/travel-voyage/ivc-rnc-eng.html" class="result-link" target="_blank">www.cbsa-asfc.gc.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.cbsa-asfc.gc.ca/travel-voyage/ivc-rnc-eng.html" target="_blank">Visitors to Canada</a>
+            </h3>
+            <p class="result-snippet">Sep 23, 2025 ... Range of travel topics including documents and eligibility criteria you need to enter Canada, what you can bring, what not to bring and how ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=www.cbsa-asfc.g" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.cbsa-asfc.gc.ca/travel-voyage/ivc-rnc-eng.html" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.cbsa-asfc.gc.ca/travel-voyage/ivc-rnc-eng.html')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=travel.destinationcanada.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#8</span>
+        <a href="https://travel.destinationcanada.com/en-us" class="result-link" target="_blank">travel.destinationcanada.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://travel.destinationcanada.com/en-us" target="_blank">Visit Canada | Official Travel Guide & Information | Destination Canada</a>
+            </h3>
+            <p class="result-snippet">Once-in-a-lifetime happens all the time. Whether it's postcard-worthy views at every pitstop or warm-hearted folks always eager to offer a helping hand, the ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=travel.destinat" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://travel.destinationcanada.com/en-us" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://travel.destinationcanada.com/en-us')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=travel.gc.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#9</span>
+        <a href="https://travel.gc.ca/returning/customs/entering-canada" class="result-link" target="_blank">travel.gc.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://travel.gc.ca/returning/customs/entering-canada" target="_blank">Entering Canada - Travel.gc.ca</a>
+            </h3>
+            <p class="result-snippet">Jun 12, 2024 ... You'll follow the same 3 steps to enter Canada: Step 1. Pre-arrival: Use Advance Declaration or complete a Declaration Card.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=travel.gc.ca" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://travel.gc.ca/returning/customs/entering-canada" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://travel.gc.ca/returning/customs/entering-canada')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=inspection.canada.ca&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#10</span>
+        <a href="http://inspection.canada.ca/en/importing-food-plants-animals/pets" class="result-link" target="_blank">inspection.canada.ca</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="http://inspection.canada.ca/en/importing-food-plants-animals/pets" target="_blank">Bringing animals to Canada: Importing and travelling with pets ...</a>
+            </h3>
+            <p class="result-snippet">Jul 22, 2024 ... Bringing animals to Canada: Importing and travelling with pets. If you are travelling with a pet or planning to import an animal to Canada, you ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=inspection.cana" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="http://inspection.canada.ca/en/importing-food-plants-animals/pets" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('http://inspection.canada.ca/en/importing-food-plants-animals/pets')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 1:35:32 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

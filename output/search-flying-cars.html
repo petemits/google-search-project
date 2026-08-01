@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results: flying cars - "flying cars"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #ffffff; 
+            color: #333333; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .search-header { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1px solid #e0e0e0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .search-header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+            color: #1a73e8; 
+        }
+        .search-info { 
+            display: flex; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .search-info p { 
+            margin: 5px 0; 
+            font-size: 1.1em; 
+        }
+        .results-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .search-result { 
+            background: #f8f9fa; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .search-result:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .result-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-wrap: wrap; 
+        }
+        .favicon { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 2px; 
+        }
+        .result-position { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+        }
+        .result-link { 
+            color: #0d652d; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+        }
+        .result-link:hover { 
+            text-decoration: underline; 
+        }
+        .result-content { 
+            display: grid; 
+            grid-template-columns: 1fr auto; 
+            gap: 25px; 
+            align-items: start; 
+        }
+        .result-text { 
+            flex: 1; 
+        }
+        .result-title { 
+            margin-bottom: 10px; 
+        }
+        .result-title a { 
+            color: #1a0dab; 
+            text-decoration: none; 
+            font-size: 1.3em; 
+            font-weight: normal; 
+        }
+        .result-title a:hover { 
+            text-decoration: underline; 
+        }
+        .result-snippet { 
+            color: #4d5156; 
+            line-height: 1.5; 
+        }
+        .result-visual { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            min-width: 200px; 
+        }
+        .result-thumbnail { 
+            width: 200px; 
+            height: 150px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            border: 1px solid #e0e0e0; 
+        }
+        .result-actions { 
+            display: flex; 
+            gap: 8px; 
+        }
+        .visit-btn, .copy-btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            transition: all 0.2s ease; 
+            flex: 1; 
+            text-align: center; 
+        }
+        .visit-btn { 
+            background: #1a73e8; 
+            color: white; 
+        }
+        .visit-btn:hover { 
+            background: #1669c1; 
+        }
+        .copy-btn { 
+            background: #f1f3f4; 
+            color: #333333; 
+            border: 1px solid #e0e0e0; 
+        }
+        .copy-btn:hover { 
+            background: #e8eaed; 
+        }
+        .search-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            color: #666; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        @media (max-width: 768px) { 
+            .result-content { 
+                grid-template-columns: 1fr; 
+            } 
+            .result-visual { 
+                align-items: center; 
+            } 
+            .search-info { 
+                flex-direction: column; 
+                gap: 10px; 
+            } 
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Google Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "flying cars"</p>
+                <p><strong>Found:</strong> 10 of 10 results</p>
+                <p><strong>Time:</strong> Multiple requests</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.wsj.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://www.wsj.com/lifestyle/cars/i-test-drove-a-flying-car-get-ready-theyre-here-257b0ecf?gaa_at=eafs&gaa_n=AWEtsqdiP_Xe-CcKzphh4Ye15cz9bfe2ZS2Hhd6vSrtlBvXslS4_iuJwHLcc&gaa_ts=690f8d9f&gaa_sig=hM-iLqvaiXc90_eEVYR1mf_AbXzhsjk25AinBQPzimuJLWMeGaxIV-9TOatkGud_J-2Xy0NBX3cdbmMJlJigOQ%3D%3D" class="result-link" target="_blank">www.wsj.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.wsj.com/lifestyle/cars/i-test-drove-a-flying-car-get-ready-theyre-here-257b0ecf?gaa_at=eafs&gaa_n=AWEtsqdiP_Xe-CcKzphh4Ye15cz9bfe2ZS2Hhd6vSrtlBvXslS4_iuJwHLcc&gaa_ts=690f8d9f&gaa_sig=hM-iLqvaiXc90_eEVYR1mf_AbXzhsjk25AinBQPzimuJLWMeGaxIV-9TOatkGud_J-2Xy0NBX3cdbmMJlJigOQ%3D%3D" target="_blank">I Test Drove a Flying Car. Get Ready, They're Here. - WSJ</a>
+            </h3>
+            <p class="result-snippet">Oct 17, 2025 ... Dan Neil takes a test flight of the Pivotal BlackFly, a series-produced electric vertical takeoff and landing vehicle made for consumers.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=www.wsj.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.wsj.com/lifestyle/cars/i-test-drove-a-flying-car-get-ready-theyre-here-257b0ecf?gaa_at=eafs&gaa_n=AWEtsqdiP_Xe-CcKzphh4Ye15cz9bfe2ZS2Hhd6vSrtlBvXslS4_iuJwHLcc&gaa_ts=690f8d9f&gaa_sig=hM-iLqvaiXc90_eEVYR1mf_AbXzhsjk25AinBQPzimuJLWMeGaxIV-9TOatkGud_J-2Xy0NBX3cdbmMJlJigOQ%3D%3D" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.wsj.com/lifestyle/cars/i-test-drove-a-flying-car-get-ready-theyre-here-257b0ecf?gaa_at=eafs&gaa_n=AWEtsqdiP_Xe-CcKzphh4Ye15cz9bfe2ZS2Hhd6vSrtlBvXslS4_iuJwHLcc&gaa_ts=690f8d9f&gaa_sig=hM-iLqvaiXc90_eEVYR1mf_AbXzhsjk25AinBQPzimuJLWMeGaxIV-9TOatkGud_J-2Xy0NBX3cdbmMJlJigOQ%3D%3D')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=en.wikipedia.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://en.wikipedia.org/wiki/Flying_car" class="result-link" target="_blank">en.wikipedia.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://en.wikipedia.org/wiki/Flying_car" target="_blank">Flying car - Wikipedia</a>
+            </h3>
+            <p class="result-snippet">A flying car or roadable aircraft is a type of vehicle which can function both as a road vehicle and as an aircraft. As used here, this includes vehicles ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=en.wikipedia.or" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://en.wikipedia.org/wiki/Flying_car" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://en.wikipedia.org/wiki/Flying_car')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://www.reddit.com/r/sciencefiction/comments/p8yloq/would_flying_cars_make_sense_in_real_life/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/sciencefiction/comments/p8yloq/would_flying_cars_make_sense_in_real_life/" target="_blank">Would flying cars make sense in real life? : r/sciencefiction</a>
+            </h3>
+            <p class="result-snippet">Aug 21, 2021 ... Yes, but as the jeffisnotepic comment is saying, cars could fly automatically and we would also have an air traffic system, which could lead to safer traffic.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/sciencefiction/comments/p8yloq/would_flying_cars_make_sense_in_real_life/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/sciencefiction/comments/p8yloq/would_flying_cars_make_sense_in_real_life/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.aeromobil.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#4</span>
+        <a href="https://www.aeromobil.com/" class="result-link" target="_blank">www.aeromobil.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.aeromobil.com/" target="_blank">Aeromobil</a>
+            </h3>
+            <p class="result-snippet">Inspired by the mythical winged horse Pegasus, the AeroMobil is the high-end vehicle species equally at home on the road or in the sky – the flying car.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=www.aeromobil.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.aeromobil.com/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.aeromobil.com/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#5</span>
+        <a href="https://www.reddit.com/r/AskEngineers/comments/39jv4a/why_arent_there_any_flying_cars/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/AskEngineers/comments/39jv4a/why_arent_there_any_flying_cars/" target="_blank">Why aren't there any flying cars? : r/AskEngineers</a>
+            </h3>
+            <p class="result-snippet">Jun 12, 2015 ... We don't have flying cars because people are bad enough at driving, and flying is an order of magnitude more responsibility. It's also an order ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/AskEngineers/comments/39jv4a/why_arent_there_any_flying_cars/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/AskEngineers/comments/39jv4a/why_arent_there_any_flying_cars/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=thebaffler.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#6</span>
+        <a href="https://thebaffler.com/salvos/of-flying-cars-and-the-declining-rate-of-profit" class="result-link" target="_blank">thebaffler.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://thebaffler.com/salvos/of-flying-cars-and-the-declining-rate-of-profit" target="_blank">Of Flying Cars and the Declining Rate of Profit</a>
+            </h3>
+            <p class="result-snippet">Probably, in economic terms, the result is negative—an impression confirmed by lower growth rates in just about all parts of the world in the eighties and ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=thebaffler.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://thebaffler.com/salvos/of-flying-cars-and-the-declining-rate-of-profit" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://thebaffler.com/salvos/of-flying-cars-and-the-declining-rate-of-profit')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.newsweek.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#7</span>
+        <a href="https://www.newsweek.com/america-on-brink-of-flying-car-revolution-10934999" class="result-link" target="_blank">www.newsweek.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.newsweek.com/america-on-brink-of-flying-car-revolution-10934999" target="_blank">America on brink of flying car revolution - Newsweek</a>
+            </h3>
+            <p class="result-snippet">Oct 25, 2025 ... Commonly known as flying cars, though they can't actually drive on the road, eVTOLs serve the function of a helicopter while more closely ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=www.newsweek.co" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.newsweek.com/america-on-brink-of-flying-car-revolution-10934999" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.newsweek.com/america-on-brink-of-flying-car-revolution-10934999')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=carsandautomobile.quora.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#8</span>
+        <a href="https://carsandautomobile.quora.com/How-come-we-dont-have-flying-cars-yet-Wouldnt-they-be-more-useful-than-airplanes-for-transportation-around-cities" class="result-link" target="_blank">carsandautomobile.quora.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://carsandautomobile.quora.com/How-come-we-dont-have-flying-cars-yet-Wouldnt-they-be-more-useful-than-airplanes-for-transportation-around-cities" target="_blank">How come we don't have flying cars yet? Wouldn't they be more ...</a>
+            </h3>
+            <p class="result-snippet">Sep 4, 2024 ... Flying cars create too many logistical and legal issues and are too expensive. To use one, you will need both a drivers license as well as a ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=carsandautomobi" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://carsandautomobile.quora.com/How-come-we-dont-have-flying-cars-yet-Wouldnt-they-be-more-useful-than-airplanes-for-transportation-around-cities" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://carsandautomobile.quora.com/How-come-we-dont-have-flying-cars-yet-Wouldnt-they-be-more-useful-than-airplanes-for-transportation-around-cities')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.youtube.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#9</span>
+        <a href="https://www.youtube.com/playlist?list=PL8ONzFWCqQ0HnDXVEdWLjp7owPv_em6h0" class="result-link" target="_blank">www.youtube.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.youtube.com/playlist?list=PL8ONzFWCqQ0HnDXVEdWLjp7owPv_em6h0" target="_blank">Flying cars! - YouTube</a>
+            </h3>
+            <p class="result-snippet">Jetson Electric Flying "Sports Car" - eVTOL Proof of Concept. Jetson · 1:43 · POV Piloting Jetson Electric "Flying Car" Personal Aerial Vehicle. Jetson.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=www.youtube.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.youtube.com/playlist?list=PL8ONzFWCqQ0HnDXVEdWLjp7owPv_em6h0" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.youtube.com/playlist?list=PL8ONzFWCqQ0HnDXVEdWLjp7owPv_em6h0')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=store.pioneerworks.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#10</span>
+        <a href="https://store.pioneerworks.org/products/we-were-promised-flying-cars" class="result-link" target="_blank">store.pioneerworks.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://store.pioneerworks.org/products/we-were-promised-flying-cars" target="_blank">Kareem Rahma: We Were Promised Flying Cars – Pioneer Works</a>
+            </h3>
+            <p class="result-snippet">The debut poetry collection from Arab-American poet Kareem Rahma―formerly of VICE and The New York Times―shows us the future in haiku.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=store.pioneerwo" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://store.pioneerworks.org/products/we-were-promised-flying-cars" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://store.pioneerworks.org/products/we-were-promised-flying-cars')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 1:21:18 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

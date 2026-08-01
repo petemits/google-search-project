@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results: landing on the moon - "landing on the moon"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #ffffff; 
+            color: #333333; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .search-header { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1px solid #e0e0e0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .search-header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+            color: #1a73e8; 
+        }
+        .search-info { 
+            display: flex; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .search-info p { 
+            margin: 5px 0; 
+            font-size: 1.1em; 
+        }
+        .results-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .search-result { 
+            background: #f8f9fa; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .search-result:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .result-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-wrap: wrap; 
+        }
+        .favicon { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 2px; 
+        }
+        .result-position { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+        }
+        .result-link { 
+            color: #0d652d; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+        }
+        .result-link:hover { 
+            text-decoration: underline; 
+        }
+        .result-content { 
+            display: grid; 
+            grid-template-columns: 1fr auto; 
+            gap: 25px; 
+            align-items: start; 
+        }
+        .result-text { 
+            flex: 1; 
+        }
+        .result-title { 
+            margin-bottom: 10px; 
+        }
+        .result-title a { 
+            color: #1a0dab; 
+            text-decoration: none; 
+            font-size: 1.3em; 
+            font-weight: normal; 
+        }
+        .result-title a:hover { 
+            text-decoration: underline; 
+        }
+        .result-snippet { 
+            color: #4d5156; 
+            line-height: 1.5; 
+        }
+        .result-visual { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            min-width: 200px; 
+        }
+        .result-thumbnail { 
+            width: 200px; 
+            height: 150px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            border: 1px solid #e0e0e0; 
+        }
+        .result-actions { 
+            display: flex; 
+            gap: 8px; 
+        }
+        .visit-btn, .copy-btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            transition: all 0.2s ease; 
+            flex: 1; 
+            text-align: center; 
+        }
+        .visit-btn { 
+            background: #1a73e8; 
+            color: white; 
+        }
+        .visit-btn:hover { 
+            background: #1669c1; 
+        }
+        .copy-btn { 
+            background: #f1f3f4; 
+            color: #333333; 
+            border: 1px solid #e0e0e0; 
+        }
+        .copy-btn:hover { 
+            background: #e8eaed; 
+        }
+        .search-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            color: #666; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        @media (max-width: 768px) { 
+            .result-content { 
+                grid-template-columns: 1fr; 
+            } 
+            .result-visual { 
+                align-items: center; 
+            } 
+            .search-info { 
+                flex-direction: column; 
+                gap: 10px; 
+            } 
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Google Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "landing on the moon"</p>
+                <p><strong>Found:</strong> 10 of 10 results</p>
+                <p><strong>Time:</strong> Multiple requests</p>
+                <p><strong>Search #:</strong> 1</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=en.wikipedia.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://en.wikipedia.org/wiki/Apollo_11" class="result-link" target="_blank">en.wikipedia.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://en.wikipedia.org/wiki/Apollo_11" target="_blank">Apollo 11 - Wikipedia</a>
+            </h3>
+            <p class="result-snippet">Apollo 11 was the first spaceflight to land humans on the Moon, conducted by NASA from July 16 to 24, 1969. Commander Neil Armstrong and Lunar Module Pilot ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=en.wikipedia.or" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://en.wikipedia.org/wiki/Apollo_11" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://en.wikipedia.org/wiki/Apollo_11')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=impactpittsburgh.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://impactpittsburgh.com/the-landing/" class="result-link" target="_blank">impactpittsburgh.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://impactpittsburgh.com/the-landing/" target="_blank">The Landing - Impact Christian Church | Pittsburgh, PA</a>
+            </h3>
+            <p class="result-snippet">The Landing is your place to work or play. The Landing is a community ... Connect with The Landing. 330 Hookstown Grade Rd Moon Township, PA 15108. (412) ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=impactpittsburg" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://impactpittsburgh.com/the-landing/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://impactpittsburgh.com/the-landing/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.nasa.gov&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://www.nasa.gov/mission/apollo-11/" class="result-link" target="_blank">www.nasa.gov</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.nasa.gov/mission/apollo-11/" target="_blank">Apollo 11 - NASA</a>
+            </h3>
+            <p class="result-snippet">Oct 11, 2024 ... Kennedy on May 25, 1961: perform a crewed lunar landing and return to Earth. ... Astronaut Buzz Aldrin stands on the Moon facing a U.S. flag ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=www.nasa.gov" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.nasa.gov/mission/apollo-11/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.nasa.gov/mission/apollo-11/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=kids.nationalgeographic.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#4</span>
+        <a href="https://kids.nationalgeographic.com/history/article/moon-landing" class="result-link" target="_blank">kids.nationalgeographic.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://kids.nationalgeographic.com/history/article/moon-landing" target="_blank">The Moon Landing | National Geographic Kids</a>
+            </h3>
+            <p class="result-snippet">Wearing bulky space suits and backpacks of oxygen to breathe, Neil Armstrong and Edwin “Buzz” Aldrin became the first human beings to walk on the moon.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=kids.nationalge" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://kids.nationalgeographic.com/history/article/moon-landing" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://kids.nationalgeographic.com/history/article/moon-landing')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=airandspace.si.edu&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#5</span>
+        <a href="https://airandspace.si.edu/explore/stories/apollo-11-moon-landing" class="result-link" target="_blank">airandspace.si.edu</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://airandspace.si.edu/explore/stories/apollo-11-moon-landing" target="_blank">Apollo 11: The Moon Landing | National Air and Space Museum</a>
+            </h3>
+            <p class="result-snippet">On July 20, 1969, humans walked on the Moon for the first time. We look back at the legacy of our first small steps on the Moon and look forward to the next ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=airandspace.si." alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://airandspace.si.edu/explore/stories/apollo-11-moon-landing" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://airandspace.si.edu/explore/stories/apollo-11-moon-landing')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.iop.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#6</span>
+        <a href="https://www.iop.org/explore-physics/moon/how-do-we-know-we-went-to-the-moon" class="result-link" target="_blank">www.iop.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.iop.org/explore-physics/moon/how-do-we-know-we-went-to-the-moon" target="_blank">How do we know that we went to the Moon? | Institute of Physics</a>
+            </h3>
+            <p class="result-snippet">With a powerful amateur telescope you can see the Apollo landing sites and, if you look at the photos from the Lunar Reconnaissance Orbiter, you can spot the ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=www.iop.org" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.iop.org/explore-physics/moon/how-do-we-know-we-went-to-the-moon" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.iop.org/explore-physics/moon/how-do-we-know-we-went-to-the-moon')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.youtube.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#7</span>
+        <a href="https://www.youtube.com/playlist?list=PLjHf9jaFs8XVTMkRxdEYrUDRqIe3wznUk" class="result-link" target="_blank">www.youtube.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.youtube.com/playlist?list=PLjHf9jaFs8XVTMkRxdEYrUDRqIe3wznUk" target="_blank">Space and Landing on the Moon - YouTube</a>
+            </h3>
+            <p class="result-snippet">Share your videos with friends, family, and the world.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=www.youtube.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.youtube.com/playlist?list=PLjHf9jaFs8XVTMkRxdEYrUDRqIe3wznUk" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.youtube.com/playlist?list=PLjHf9jaFs8XVTMkRxdEYrUDRqIe3wznUk')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#8</span>
+        <a href="https://www.reddit.com/r/AskHistorians/comments/1p1f69/how_far_behind_was_the_russian_program_to_land_on/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/AskHistorians/comments/1p1f69/how_far_behind_was_the_russian_program_to_land_on/" target="_blank">How far behind was the Russian program to land on the moon? : r ...</a>
+            </h3>
+            <p class="result-snippet">Oct 23, 2013 ... Soviets were first to get to the moon with unmanned ships and were first to get their flag to the moon. They were first to get photos of dark ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/AskHistorians/comments/1p1f69/how_far_behind_was_the_russian_program_to_land_on/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/AskHistorians/comments/1p1f69/how_far_behind_was_the_russian_program_to_land_on/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=ispace-inc.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#9</span>
+        <a href="https://ispace-inc.com/news-en/?p=7664" class="result-link" target="_blank">ispace-inc.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://ispace-inc.com/news-en/?p=7664" target="_blank">Status Update on ispace Mission 2 SMBC x HAKUTO-R Venture Moon</a>
+            </h3>
+            <p class="result-snippet">Jun 6, 2025 ... ... Moon following its attempted landing on the moon. On June 6, 2025, (JST) the RESILIENCE lunar lander began a landing sequence in an attempt ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/DDA0DD/FFFFFF?text=ispace-inc.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://ispace-inc.com/news-en/?p=7664" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://ispace-inc.com/news-en/?p=7664')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#10</span>
+        <a href="https://www.reddit.com/r/history/comments/igics2/how_did_the_soviets_treat_the_moon_landing_of/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/history/comments/igics2/how_did_the_soviets_treat_the_moon_landing_of/" target="_blank">How did the soviets treat the moon landing of 1969 inside the USSR ...</a>
+            </h3>
+            <p class="result-snippet">Aug 25, 2020 ... The USSR were pretty ready to call the whole moon landing a hoax if they found any evidence of it being one, yet instead confirmed that the Americans had done ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/history/comments/igics2/how_did_the_soviets_treat_the_moon_landing_of/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/history/comments/igics2/how_did_the_soviets_treat_the_moon_landing_of/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 1:30:32 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

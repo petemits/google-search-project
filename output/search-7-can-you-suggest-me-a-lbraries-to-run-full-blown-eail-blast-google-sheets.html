@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results: can you suggest me a lbraries to run full blown eail blast google sheets - "can you suggest me a lbraries to run full blown eail blast google sheets"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #ffffff; 
+            color: #333333; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .search-header { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1px solid #e0e0e0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .search-header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+            color: #1a73e8; 
+        }
+        .search-info { 
+            display: flex; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .search-info p { 
+            margin: 5px 0; 
+            font-size: 1.1em; 
+        }
+        .results-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .search-result { 
+            background: #f8f9fa; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .search-result:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .result-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-wrap: wrap; 
+        }
+        .favicon { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 2px; 
+        }
+        .result-position { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+        }
+        .result-link { 
+            color: #0d652d; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+        }
+        .result-link:hover { 
+            text-decoration: underline; 
+        }
+        .result-content { 
+            display: grid; 
+            grid-template-columns: 1fr auto; 
+            gap: 25px; 
+            align-items: start; 
+        }
+        .result-text { 
+            flex: 1; 
+        }
+        .result-title { 
+            margin-bottom: 10px; 
+        }
+        .result-title a { 
+            color: #1a0dab; 
+            text-decoration: none; 
+            font-size: 1.3em; 
+            font-weight: normal; 
+        }
+        .result-title a:hover { 
+            text-decoration: underline; 
+        }
+        .result-snippet { 
+            color: #4d5156; 
+            line-height: 1.5; 
+        }
+        .result-visual { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            min-width: 200px; 
+        }
+        .result-thumbnail { 
+            width: 200px; 
+            height: 150px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            border: 1px solid #e0e0e0; 
+        }
+        .result-actions { 
+            display: flex; 
+            gap: 8px; 
+        }
+        .visit-btn, .copy-btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            transition: all 0.2s ease; 
+            flex: 1; 
+            text-align: center; 
+        }
+        .visit-btn { 
+            background: #1a73e8; 
+            color: white; 
+        }
+        .visit-btn:hover { 
+            background: #1669c1; 
+        }
+        .copy-btn { 
+            background: #f1f3f4; 
+            color: #333333; 
+            border: 1px solid #e0e0e0; 
+        }
+        .copy-btn:hover { 
+            background: #e8eaed; 
+        }
+        .search-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            color: #666; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        @media (max-width: 768px) { 
+            .result-content { 
+                grid-template-columns: 1fr; 
+            } 
+            .result-visual { 
+                align-items: center; 
+            } 
+            .search-info { 
+                flex-direction: column; 
+                gap: 10px; 
+            } 
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Google Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "can you suggest me a lbraries to run full blown eail blast google sheets"</p>
+                <p><strong>Found:</strong> 10 of 10 results</p>
+                <p><strong>Time:</strong> Multiple requests</p>
+                <p><strong>Search #:</strong> 7</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://www.reddit.com/r/networking/comments/148qz1f/why_is_there_a_general_hostility_to_quic_by/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/networking/comments/148qz1f/why_is_there_a_general_hostility_to_quic_by/" target="_blank">Why is there a general hostility to QUIC by network engineers? : r ...</a>
+            </h3>
+            <p class="result-snippet">Jun 13, 2023 ... ... do than blast packets at you. Your sites aren't loading slow because ... Yes but it would most likely need a full blown hardware refresh.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/networking/comments/148qz1f/why_is_there_a_general_hostility_to_quic_by/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/networking/comments/148qz1f/why_is_there_a_general_hostility_to_quic_by/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://stackoverflow.com/questions/30248583/error-could-not-find-function" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/30248583/error-could-not-find-function" target="_blank">r - Error: could not find function "%>%" - Stack Overflow</a>
+            </h3>
+            <p class="result-snippet">May 14, 2015 ... You need to load a package (like magrittr or dplyr ) that defines the function first, then it should work. r. Copy.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/30248583/error-could-not-find-function" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/30248583/error-could-not-find-function')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://www.reddit.com/r/Python/comments/u6bcgc/why_do_people_still_pay_and_use_matlab_having/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/Python/comments/u6bcgc/why_do_people_still_pay_and_use_matlab_having/" target="_blank">Why do people still pay and use matlab having python numpy and ...</a>
+            </h3>
+            <p class="result-snippet">Apr 18, 2022 ... One time, I was having a problem with a National Instruments DAQ card working with Simulink. Called up Mathworks and they sent me an updated ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/Python/comments/u6bcgc/why_do_people_still_pay_and_use_matlab_having/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/Python/comments/u6bcgc/why_do_people_still_pay_and_use_matlab_having/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.mynewroots.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#4</span>
+        <a href="https://www.mynewroots.org/2013/02/the-life-changing-loaf-of-bread/" class="result-link" target="_blank">www.mynewroots.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.mynewroots.org/2013/02/the-life-changing-loaf-of-bread/" target="_blank">The Life-Changing Loaf of Bread - My New Roots -</a>
+            </h3>
+            <p class="result-snippet">Feb 12, 2013 ... If it is JUST a nut allergy and seeds are okay, replace the nuts with seeds. 3. You can use ground flax seeds instead of whole, but you're going ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=www.mynewroots." alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.mynewroots.org/2013/02/the-life-changing-loaf-of-bread/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.mynewroots.org/2013/02/the-life-changing-loaf-of-bread/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#5</span>
+        <a href="https://stackoverflow.com/questions/23025433/how-to-clear-gradle-cache" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/23025433/how-to-clear-gradle-cache" target="_blank">android - How to clear gradle cache? - Stack Overflow</a>
+            </h3>
+            <p class="result-snippet">Apr 12, 2014 ... Gradle cache is located at You can browse to these directory and manually delete it or run rm -r $HOME/.gradle/caches/ on UNIX system.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/23025433/how-to-clear-gradle-cache" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/23025433/how-to-clear-gradle-cache')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=theautisticadvocate.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#6</span>
+        <a href="https://theautisticadvocate.com/an-autistic-burnout/" class="result-link" target="_blank">theautisticadvocate.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://theautisticadvocate.com/an-autistic-burnout/" target="_blank">Autistic Burnout - How to Recognise and Understand it</a>
+            </h3>
+            <p class="result-snippet">May 21, 2018 ... My whole body is tired, lead boots weighing me down, my brain slowed distinctly, reactions are slack. A day of talking and socialising – ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=theautisticadvo" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://theautisticadvocate.com/an-autistic-burnout/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://theautisticadvocate.com/an-autistic-burnout/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=firebase.google.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#7</span>
+        <a href="https://firebase.google.com/docs/projects/billing/avoid-surprise-bills" class="result-link" target="_blank">firebase.google.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://firebase.google.com/docs/projects/billing/avoid-surprise-bills" target="_blank">Avoid surprise bills | Firebase Documentation</a>
+            </h3>
+            <p class="result-snippet">Whether you're just starting out developing your app or you have a full-blown production app, you want to make sure you understand your costs and how to ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=firebase.google" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://firebase.google.com/docs/projects/billing/avoid-surprise-bills" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://firebase.google.com/docs/projects/billing/avoid-surprise-bills')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.facebook.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#8</span>
+        <a href="https://www.facebook.com/groups/howthingsworkoh/posts/24360753560279053/" class="result-link" target="_blank">www.facebook.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.facebook.com/groups/howthingsworkoh/posts/24360753560279053/" target="_blank">Guys, we need to be CONTACTING DeWine over the Natl Guard ...</a>
+            </h3>
+            <p class="result-snippet">Mar 11, 2025 ... If the mailbox is full, use a different number, or leave a message with (ANY) staff. It will get back to him. Blow up the phones of the * ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=www.facebook.co" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.facebook.com/groups/howthingsworkoh/posts/24360753560279053/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.facebook.com/groups/howthingsworkoh/posts/24360753560279053/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=firebase.google.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#9</span>
+        <a href="https://firebase.google.com/docs/cloud-messaging" class="result-link" target="_blank">firebase.google.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://firebase.google.com/docs/cloud-messaging" target="_blank">Firebase Cloud Messaging</a>
+            </h3>
+            <p class="result-snippet">... email or other data is available to sync. You can send notification messages to drive user re-engagement and retention. For use cases such as instant ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=firebase.google" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://firebase.google.com/docs/cloud-messaging" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://firebase.google.com/docs/cloud-messaging')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=probablydance.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#10</span>
+        <a href="https://probablydance.com/2025/05/31/im-open-sourcing-my-custom-benchmark-gui/" class="result-link" target="_blank">probablydance.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://probablydance.com/2025/05/31/im-open-sourcing-my-custom-benchmark-gui/" target="_blank">I'm Open-Sourcing my Custom Benchmark GUI | Probably Dance</a>
+            </h3>
+            <p class="result-snippet">May 31, 2025 ... I used to use Google Benchmark, which is a fine library, but at some point you realize that you need a GUI to really scale up benchmarks.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=probablydance.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://probablydance.com/2025/05/31/im-open-sourcing-my-custom-benchmark-gui/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://probablydance.com/2025/05/31/im-open-sourcing-my-custom-benchmark-gui/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 1:42:28 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

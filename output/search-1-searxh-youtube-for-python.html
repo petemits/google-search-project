@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results: searxh youtube for python - "searxh youtube for python"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #ffffff; 
+            color: #333333; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .search-header { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1px solid #e0e0e0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .search-header h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 15px; 
+            color: #1a73e8; 
+        }
+        .search-info { 
+            display: flex; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .search-info p { 
+            margin: 5px 0; 
+            font-size: 1.1em; 
+        }
+        .results-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .search-result { 
+            background: #f8f9fa; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+        .search-result:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .result-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-wrap: wrap; 
+        }
+        .favicon { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 2px; 
+        }
+        .result-position { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 2px 8px; 
+            border-radius: 12px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+        }
+        .result-link { 
+            color: #0d652d; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+        }
+        .result-link:hover { 
+            text-decoration: underline; 
+        }
+        .result-content { 
+            display: grid; 
+            grid-template-columns: 1fr auto; 
+            gap: 25px; 
+            align-items: start; 
+        }
+        .result-text { 
+            flex: 1; 
+        }
+        .result-title { 
+            margin-bottom: 10px; 
+        }
+        .result-title a { 
+            color: #1a0dab; 
+            text-decoration: none; 
+            font-size: 1.3em; 
+            font-weight: normal; 
+        }
+        .result-title a:hover { 
+            text-decoration: underline; 
+        }
+        .result-snippet { 
+            color: #4d5156; 
+            line-height: 1.5; 
+        }
+        .result-visual { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            min-width: 200px; 
+        }
+        .result-thumbnail { 
+            width: 200px; 
+            height: 150px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            border: 1px solid #e0e0e0; 
+        }
+        .result-actions { 
+            display: flex; 
+            gap: 8px; 
+        }
+        .visit-btn, .copy-btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            transition: all 0.2s ease; 
+            flex: 1; 
+            text-align: center; 
+        }
+        .visit-btn { 
+            background: #1a73e8; 
+            color: white; 
+        }
+        .visit-btn:hover { 
+            background: #1669c1; 
+        }
+        .copy-btn { 
+            background: #f1f3f4; 
+            color: #333333; 
+            border: 1px solid #e0e0e0; 
+        }
+        .copy-btn:hover { 
+            background: #e8eaed; 
+        }
+        .search-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            color: #666; 
+            border-top: 1px solid #e0e0e0; 
+        }
+        @media (max-width: 768px) { 
+            .result-content { 
+                grid-template-columns: 1fr; 
+            } 
+            .result-visual { 
+                align-items: center; 
+            } 
+            .search-info { 
+                flex-direction: column; 
+                gap: 10px; 
+            } 
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Google Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "searxh youtube for python"</p>
+                <p><strong>Found:</strong> 10 of 10 results</p>
+                <p><strong>Time:</strong> Multiple requests</p>
+                <p><strong>Search #:</strong> 1</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=pypi.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://pypi.org/project/youtube-search-python/" class="result-link" target="_blank">pypi.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://pypi.org/project/youtube-search-python/" target="_blank">youtube-search-python · PyPI</a>
+            </h3>
+            <p class="result-snippet">Search for YouTube videos, channels & playlists. Get video & playlist information using link. Get search suggestions.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=pypi.org" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://pypi.org/project/youtube-search-python/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://pypi.org/project/youtube-search-python/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.reddit.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://www.reddit.com/r/Python/comments/m08e89/i_made_a_python_program_that_search_on_youtube/" class="result-link" target="_blank">www.reddit.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.reddit.com/r/Python/comments/m08e89/i_made_a_python_program_that_search_on_youtube/" target="_blank">I made a python program that search on YouTube directly from the ...</a>
+            </h3>
+            <p class="result-snippet">Mar 8, 2021 ... I created a python program that simply search my query on YouTube from by browsers search box, by using a hot key [Ctrl+Alt+y]. Hope it will be helpful.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=www.reddit.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.reddit.com/r/Python/comments/m08e89/i_made_a_python_program_that_search_on_youtube/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.reddit.com/r/Python/comments/m08e89/i_made_a_python_program_that_search_on_youtube/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://stackoverflow.com/questions/62779030/youtube-search-on-python-3-8" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/62779030/youtube-search-on-python-3-8" target="_blank">Youtube Search on Python 3.8 - Stack Overflow</a>
+            </h3>
+            <p class="result-snippet">Jul 7, 2020 ... I'm having trouble searching links on youtube, I tried google-api-python-client, along with the sample codes converted to python3, I tried to use the code ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/62779030/youtube-search-on-python-3-8" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/62779030/youtube-search-on-python-3-8')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#4</span>
+        <a href="https://github.com/alexmercerind/youtube-search-python" class="result-link" target="_blank">github.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://github.com/alexmercerind/youtube-search-python" target="_blank">alexmercerind/youtube-search-python: Search for YouTube ... - GitHub</a>
+            </h3>
+            <p class="result-snippet">Jun 30, 2022 ... Search for YouTube videos, channels & playlists. Get video & playlist info using link. Get search suggestions. WITHOUT YouTube Data API v3.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=github.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://github.com/alexmercerind/youtube-search-python" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://github.com/alexmercerind/youtube-search-python')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#5</span>
+        <a href="https://stackoverflow.com/questions/68693381/how-to-get-youtube-search-result-list-via-python-and-get-maximum-amount-of-video" class="result-link" target="_blank">stackoverflow.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://stackoverflow.com/questions/68693381/how-to-get-youtube-search-result-list-via-python-and-get-maximum-amount-of-video" target="_blank">selenium - How to get Youtube search result list via Python and get ...</a>
+            </h3>
+            <p class="result-snippet">Aug 7, 2021 ... One solution is to run multiple times (assuming each time the result is different), and then you take all the unique ones until you get to the number of result ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/DDA0DD/FFFFFF?text=stackoverflow.c" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://stackoverflow.com/questions/68693381/how-to-get-youtube-search-result-list-via-python-and-get-maximum-amount-of-video" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://stackoverflow.com/questions/68693381/how-to-get-youtube-search-result-list-via-python-and-get-maximum-amount-of-video')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=developers.google.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#6</span>
+        <a href="https://developers.google.com/youtube/v3/docs/search/list" class="result-link" target="_blank">developers.google.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://developers.google.com/youtube/v3/docs/search/list" target="_blank">Search: list | YouTube Data API | Google for Developers</a>
+            </h3>
+            <p class="result-snippet">Returns a collection of search results that match the query parameters specified in the API request. By default, a search result set identifies matching video, ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=developers.goog" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://developers.google.com/youtube/v3/docs/search/list" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://developers.google.com/youtube/v3/docs/search/list')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=discuss.python.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#7</span>
+        <a href="https://discuss.python.org/t/scan-network-and-grab-details-of-hosts-found/59789" class="result-link" target="_blank">discuss.python.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://discuss.python.org/t/scan-network-and-grab-details-of-hosts-found/59789" target="_blank">Scan network and grab details of hosts found - Python Help ...</a>
+            </h3>
+            <p class="result-snippet">Aug 2, 2024 ... I'm just brainstorming here. These have not been tested. I would search Youtube for videos from the past year and see what comes up. Or I would ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/96CEB4/FFFFFF?text=discuss.python." alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://discuss.python.org/t/scan-network-and-grab-details-of-hosts-found/59789" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://discuss.python.org/t/scan-network-and-grab-details-of-hosts-found/59789')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=blog.stackademic.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#8</span>
+        <a href="https://blog.stackademic.com/i-automated-a-youtube-channel-with-chatgpt-and-python-e6ca42d8f836" class="result-link" target="_blank">blog.stackademic.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://blog.stackademic.com/i-automated-a-youtube-channel-with-chatgpt-and-python-e6ca42d8f836" target="_blank">I Automated a YouTube Channel with ChatGPT | by Luke Kerbs ...</a>
+            </h3>
+            <p class="result-snippet">Apr 15, 2024 ... My Python code for generating YouTube videos works like this: The ... Given the following video script, recommend a YouTube search ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/45B7D1/FFFFFF?text=blog.stackademi" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://blog.stackademic.com/i-automated-a-youtube-channel-with-chatgpt-and-python-e6ca42d8f836" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://blog.stackademic.com/i-automated-a-youtube-channel-with-chatgpt-and-python-e6ca42d8f836')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=webapps.stackexchange.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#9</span>
+        <a href="https://webapps.stackexchange.com/questions/181452/how-do-you-remove-youtube-shorts-from-youtube-search-results" class="result-link" target="_blank">webapps.stackexchange.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://webapps.stackexchange.com/questions/181452/how-do-you-remove-youtube-shorts-from-youtube-search-results" target="_blank">How do you remove YouTube 'Shorts' from youtube search results ...</a>
+            </h3>
+            <p class="result-snippet">Jun 28, 2025 ... When searching on YouTube, sometimes the search results are very cluttered with short, gimmicky videos called 'Shorts'. I suspect these clutter ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=webapps.stackex" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://webapps.stackexchange.com/questions/181452/how-do-you-remove-youtube-shorts-from-youtube-search-results" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://webapps.stackexchange.com/questions/181452/how-do-you-remove-youtube-shorts-from-youtube-search-results')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=crawlbase.com&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#10</span>
+        <a href="https://crawlbase.com/blog/scrape-youtube-data/" class="result-link" target="_blank">crawlbase.com</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://crawlbase.com/blog/scrape-youtube-data/" target="_blank">How to Scrape YouTube Data for Optimization | Crawlbase</a>
+            </h3>
+            <p class="result-snippet">Jul 8, 2024 ... Web scraping is a must for pulling data from public YouTube pages, video details, comments, channel info and search results. Use Python and yt- ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/DDA0DD/FFFFFF?text=crawlbase.com" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://crawlbase.com/blog/scrape-youtube-data/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://crawlbase.com/blog/scrape-youtube-data/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 1:37:52 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

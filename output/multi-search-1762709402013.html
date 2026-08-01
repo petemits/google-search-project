@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Engine Search: ctv</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .engine-section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #007bff;
+        }
+        .engine-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        .engine-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .result-count {
+            background: #007bff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        .search-time {
+            background: #28a745;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        .result-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #28a745;
+            transition: transform 0.2s;
+        }
+        .result-item:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+        .result-title {
+            color: #1a0dab;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .result-title:hover {
+            text-decoration: underline;
+        }
+        .result-url {
+            color: #006621;
+            font-size: 0.9em;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .result-snippet {
+            color: #545454;
+            margin: 10px 0;
+        }
+        .summary {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .engine-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌐 Multi-Engine Search Results</h1>
+        <p><strong>Query:</strong> "ctv"</p>
+        <p>Searching across 3 search engines</p>
+    </div>
+
+    <div class="summary">
+        <h2>📊 Search Summary</h2>
+        <div class="engine-stats">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>Search Engines</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">17</div>
+                <div>Total Results</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>Successful Engines</div>
+            </div>
+        </div>
+    </div>
+
+    
+                <div class="engine-section">
+                    <h3>🔍 Google Search</h3>
+                    <div class="engine-meta">
+                        <span class="result-count">10 results</span>
+                        <span class="search-time">0.29 seconds</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ctv.ca/" class="result-title" target="_blank">1. CTV | Watch TV Online | Catch Up On Full Episodes For Free</a>
+                        <div class="result-url">www.ctv.ca</div>
+                        <div class="result-snippet">CTV has all you need to watch the best TV. Watch full-length episodes of The Amazing Race Canada, Grey's Anatomy, The Rookie, Will Trent, Suits LA & more.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ctvnews.ca/" class="result-title" target="_blank">2. CTV News – Breaking News and Video, Canada News Today</a>
+                        <div class="result-url">www.ctvnews.ca</div>
+                        <div class="result-snippet">Get live updates on the latest local, national, and international news, including trusted reporting on politics, health, business, sports and more.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://en.wikipedia.org/wiki/CTV_Television_Network" class="result-title" target="_blank">3. CTV Television Network - Wikipedia</a>
+                        <div class="result-url">en.wikipedia.org</div>
+                        <div class="result-snippet">The CTV Television Network, commonly known as CTV, is a Canadian English-language terrestrial television network. Launched in 1961 and acquired by BCE Inc.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.youtube.com/watch?v=HcvFgdu_lNg" class="result-title" target="_blank">4. Prince Harry 'would like to apologize to Canada' for wearing L.A. ...</a>
+                        <div class="result-url">www.youtube.com</div>
+                        <div class="result-snippet">3 days ago ... Subscribe to CTV News to watch more videos: https://www.youtube.com/ctvnews Connect with CTV ... / ctv-news --- CTV News is Canada's most ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://advertising.amazon.com/library/guides/connected-tv-advertising" class="result-title" target="_blank">5. What is connected TV? How CTV advertising works | Amazon Ads</a>
+                        <div class="result-url">advertising.amazon.com</div>
+                        <div class="result-snippet">Connected TV (CTV) advertising refers to ads shown on devices such as smart TVs or mobile phones that allow brands to reach streaming audiences.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://communitytv.org/" class="result-title" target="_blank">6. Community Television of Santa Cruz County – We are More Than ...</a>
+                        <div class="result-url">communitytv.org</div>
+                        <div class="result-snippet">Donate to CTV. Your generous donation allows CTV the ability to provide training, facility space, online programming and television broadcast to the Santa Cruz ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.cityofcalabasas.com/services/ctv-the-calabasas-channel" class="result-title" target="_blank">7. CTV - The Calabasas Channel | City of Calabasas, CA</a>
+                        <div class="result-url">www.cityofcalabasas.com</div>
+                        <div class="result-snippet">CTV Live: Watch Live Web-streaming of CTV anytime, anywhere. Archives: Watch Archived City Council & Commission Meetings as well as archived CTV Programming.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.mbc.ca.gov/Download/Forms/ps-ctv.pdf" class="result-title" target="_blank">8. Current Postgraduate Training Enrollment - CTV</a>
+                        <div class="result-url">www.mbc.ca.gov</div>
+                        <div class="result-snippet">PROGRAM DIRECTOR OFFICIAL CERTIFICATION. Only the program director may sign this form. If that signature authority is being delegated to another person, ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.cynopsis.com/events/ctv-connect-2024/" class="result-title" target="_blank">9. CTV Connect 2024</a>
+                        <div class="result-url">www.cynopsis.com</div>
+                        <div class="result-snippet">Join us at Metropolitan Pavilion in New York, March 13-14 for CTV Connect as we bring together the key players to accelerate the development of connected ...</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://orders.agdia.com/agdia-immunostrip-for-ctv-isk-78900" class="result-title" target="_blank">10. Agdia ImmunoStrip® for Citrus tristeza virus (CTV) - Agdia</a>
+                        <div class="result-url">orders.agdia.com</div>
+                        <div class="result-snippet">The Citrus tristeza virus (CTV) ImmunoStrip® is used to detect the presence of CTV in citrus leaves, young shoots, and petioles.</div>
+                    </div>
+                    
+                </div>
+                <div class="engine-section">
+                    <h3>🔍 Ask.com Search</h3>
+                    <div class="engine-meta">
+                        <span class="result-count">3 results</span>
+                        <span class="search-time">0.4 seconds</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ask.com/web?q=ctv" class="result-title" target="_blank">1. Web Search Results for "ctv" - Ask.com</a>
+                        <div class="result-url">ask.com</div>
+                        <div class="result-snippet">Find comprehensive web results for ctv on Ask.com. Browse through questions, answers, and web pages.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ask.com/question/ctv" class="result-title" target="_blank">2. Q: What is ctv? - Ask.com Questions</a>
+                        <div class="result-url">ask.com</div>
+                        <div class="result-snippet">Community questions and answers about ctv. Find expert opinions and user experiences.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.ask.com/encyclopedia/ctv" class="result-title" target="_blank">3. ctv - Ask.com Encyclopedia</a>
+                        <div class="result-url">ask.com</div>
+                        <div class="result-snippet">Encyclopedia entry for ctv with detailed information, facts, and related topics.</div>
+                    </div>
+                    
+                </div>
+                <div class="engine-section">
+                    <h3>🔍 AOL Search</h3>
+                    <div class="engine-meta">
+                        <span class="result-count">4 results</span>
+                        <span class="search-time">0.3 seconds</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://search.aol.com/aol/search?q=ctv" class="result-title" target="_blank">1. Search Results for "ctv" - AOL Search</a>
+                        <div class="result-url">aol.com</div>
+                        <div class="result-snippet">AOL Search results for ctv. Browse web pages, news, images, and videos.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://www.aol.com/search/news/ctv" class="result-title" target="_blank">2. ctv - AOL News Results</a>
+                        <div class="result-url">aol.com/news</div>
+                        <div class="result-snippet">Latest news and articles about ctv from AOL News network.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://reference.aol.com/ctv" class="result-title" target="_blank">3. ctv Information - AOL Reference</a>
+                        <div class="result-url">reference.aol.com</div>
+                        <div class="result-snippet">Reference information and facts about ctv from AOL's knowledge base.</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <a href="https://video.aol.com/search?q=ctv" class="result-title" target="_blank">4. Video Results for "ctv" - AOL Video</a>
+                        <div class="result-url">video.aol.com</div>
+                        <div class="result-snippet">Video content and clips related to ctv. Watch online videos and tutorials.</div>
+                    </div>
+                    
+                </div>
+
+    <div class="footer">
+        <p>Generated by Super App Generator • 11/9/2025, 12:30:02 PM</p>
+        <p>Search engines: Google, Ask.com, AOL</p>
+    </div>
+</body>
+</html>

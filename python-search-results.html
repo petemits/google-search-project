@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Search - "Python programming"</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; color: #333333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .search-header { background: #f8f9fa; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #e0e0e0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .search-header h1 { font-size: 2.5em; margin-bottom: 15px; color: #1a73e8; }
+        .search-info { display: flex; gap: 30px; flex-wrap: wrap; }
+        .search-info p { margin: 5px 0; font-size: 1.1em; }
+        .results-container { display: flex; flex-direction: column; gap: 20px; }
+        .search-result { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 12px; padding: 25px; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .search-result:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .result-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .favicon { width: 16px; height: 16px; border-radius: 2px; }
+        .result-position { background: #1a73e8; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
+        .result-link { color: #0d652d; text-decoration: none; font-size: 0.9em; }
+        .result-link:hover { text-decoration: underline; }
+        .result-content { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: start; }
+        .result-text { flex: 1; }
+        .result-title { margin-bottom: 10px; }
+        .result-title a { color: #1a0dab; text-decoration: none; font-size: 1.3em; font-weight: normal; }
+        .result-title a:hover { text-decoration: underline; }
+        .result-snippet { color: #4d5156; line-height: 1.5; }
+        .result-visual { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
+        .result-thumbnail { width: 200px; height: 150px; border-radius: 8px; object-fit: cover; border: 1px solid #e0e0e0; }
+        .result-actions { display: flex; gap: 8px; }
+        .visit-btn, .copy-btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 0.9em; transition: all 0.2s ease; flex: 1; text-align: center; }
+        .visit-btn { background: #1a73e8; color: white; }
+        .visit-btn:hover { background: #1669c1; }
+        .copy-btn { background: #f1f3f4; color: #333333; border: 1px solid #e0e0e0; }
+        .copy-btn:hover { background: #e8eaed; }
+        .search-footer { text-align: center; margin-top: 40px; padding: 20px; color: #666; border-top: 1px solid #e0e0e0; }
+        @media (max-width: 768px) { .result-content { grid-template-columns: 1fr; } .result-visual { align-items: center; } .search-info { flex-direction: column; gap: 10px; } }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+        
+</head>
+<body>
+    <div class="container">
+        <header class="search-header">
+            <h1>🔍 Search Results</h1>
+            <div class="search-info">
+                <p><strong>Query:</strong> "Python programming"</p>
+                <p><strong>Found:</strong> 3 of 453000000 results</p>
+                <p><strong>Time:</strong> 0.205729 seconds</p>
+            </div>
+        </header>
+
+        <div class="results-container">
+            
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.python.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#1</span>
+        <a href="https://www.python.org/" class="result-link" target="_blank">www.python.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.python.org/" target="_blank">Welcome to Python.org</a>
+            </h3>
+            <p class="result-snippet">The official home of the Python Programming Language.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/98D8C8/FFFFFF?text=www.python.org" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.python.org/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.python.org/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=en.wikipedia.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#2</span>
+        <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" class="result-link" target="_blank">en.wikipedia.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">Python (programming language) - Wikipedia</a>
+            </h3>
+            <p class="result-snippet">Python (programming language) ... Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of ...</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/FFEAA7/FFFFFF?text=en.wikipedia.org" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://en.wikipedia.org/wiki/Python_(programming_language)')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="search-result">
+    <div class="result-header">
+        <img src="https://www.google.com/s2/favicons?domain=www.python.org&sz=32" alt="Favicon" class="favicon" onerror="this.style.display='none'">
+        <span class="result-position">#3</span>
+        <a href="https://www.python.org/about/gettingstarted/" class="result-link" target="_blank">www.python.org</a>
+    </div>
+    
+    <div class="result-content">
+        <div class="result-text">
+            <h3 class="result-title">
+                <a href="https://www.python.org/about/gettingstarted/" target="_blank">Python For Beginners | Python.org</a>
+            </h3>
+            <p class="result-snippet">An experienced programmer in any programming language (whatever it may be) can pick up Python very quickly. It's also easy for beginners to use and learn.</p>
+        </div>
+        
+        <div class="result-visual">
+            <img src="https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=www.python.org" alt="Preview" class="result-thumbnail" 
+                 onerror="this.style.display='none'">
+            <div class="result-actions">
+                <a href="https://www.python.org/about/gettingstarted/" class="visit-btn" target="_blank">Visit Site</a>
+                <button class="copy-btn" onclick="copyToClipboard('https://www.python.org/about/gettingstarted/')">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+
+        <footer class="search-footer">
+            <p>Generated by Google Search API • 11/8/2025, 12:46:58 PM</p>
+        </footer>
+    </div>
+</body>
+</html>
+        

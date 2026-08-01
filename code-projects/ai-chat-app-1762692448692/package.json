@@ -1,0 +1,22 @@
+{
+  "name": "ai-chat-app-1762692448692",
+  "version": "1.0.0",
+  "description": "ai chat app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "chat",
+    "messaging",
+    "real-time"
+  ],
+  "author": "Code Generator",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0",
+    "socket.io": "^4.7.0",
+    "cors": "^2.8.5"
+  }
+}
